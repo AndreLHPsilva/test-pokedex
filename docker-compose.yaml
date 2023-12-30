@@ -25,14 +25,14 @@ services:
     depends_on:
       - database
 
-  # frontend:
-  #   environment:
-  #     URL_POKE_API_WEB: https://pokeapi.co/api/v2
-  #     URL_BASE_API: http://backend:3000
-  #   build:
-  #     context: ./frontend
-  #   ports:
-  #     - 5173:5173
-  #   restart: always
-  #   depends_on:
-  #     - backend
+  frontend:
+    environment:
+      URL_POKE_API_WEB: https://pokeapi.co/api/v2
+      URL_BASE_API: http://backend:3000
+    build:
+      context: ./frontend
+    ports:
+      - 5173:5173
+    restart: always
+    depends_on:
+      - backend
