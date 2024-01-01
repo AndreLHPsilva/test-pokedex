@@ -1,29 +1,9 @@
 import { prisma } from ".";
-import {
-  ICreateTeamDTO,
-  ITeamRepository,
-  IUpdateTeamDTO,
-} from "../ITeamRepository";
+import { ICreateTeamDTO, ITeamRepository } from "../ITeamRepository";
 import { ITeams } from "@models/Teams";
 
 class TeamPrismaRepository implements ITeamRepository {
   constructor(private repository = prisma.team) {}
-
-  async update({ name, team_id }: IUpdateTeamDTO): Promise<ITeams> {
-    return await this.repository.update({
-      where: { id: team_id },
-      data: {
-        name,
-      },
-      include: {
-        TeamsOnPokemons: {
-          include: {
-            pokemon: true,
-          },
-        },
-      },
-    });
-  }
 
   async find(team_id: string): Promise<ITeams | null> {
     return await this.repository.findFirst({
@@ -31,9 +11,9 @@ class TeamPrismaRepository implements ITeamRepository {
       include: {
         TeamsOnPokemons: {
           include: {
-            pokemon: true,
-          },
-        },
+            pokemon: true
+          }
+        }
       },
     });
   }
@@ -46,9 +26,9 @@ class TeamPrismaRepository implements ITeamRepository {
       include: {
         TeamsOnPokemons: {
           include: {
-            pokemon: true,
-          },
-        },
+            pokemon: true
+          }
+        }
       },
     });
   }

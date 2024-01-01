@@ -5,7 +5,6 @@ import { AddPokemonController } from "@modules/Team/usecases/AddPokemon/AddPokem
 import { FindController } from "@modules/Team/usecases/Find/FindController";
 import { FindByUserController } from "@modules/Team/usecases/FindByUser/FindByUserController";
 import { RemovePokemonController } from "@modules/Team/usecases/RemovePokemon/RemovePokemonController";
-import { UpdateController } from "@modules/Team/usecases/Update/UpdateController";
 
 export const teamRoutes = express.Router();
 const authMiddleware = new AuthMiddleware();
@@ -13,7 +12,6 @@ const authMiddleware = new AuthMiddleware();
 const findController = new FindController();
 const findByUserController = new FindByUserController();
 const createController = new CreateController();
-const updateController = new UpdateController();
 const addPokemonController = new AddPokemonController();
 const removePokemonController = new RemovePokemonController();
 
@@ -29,18 +27,10 @@ teamRoutes.post("/", authMiddleware.auth, async (req, res) => {
   return await createController.handle(req, res);
 });
 
-teamRoutes.put("/:team_id", authMiddleware.auth, async (req, res) => {
-  return await updateController.handle(req, res);
-});
-
 teamRoutes.post("/add-pokemon", authMiddleware.auth, async (req, res) => {
   return await addPokemonController.handle(req, res);
 });
 
-teamRoutes.delete(
-  "/:team_id/remove-pokemon/:pokemon_id",
-  authMiddleware.auth,
-  async (req, res) => {
-    return await removePokemonController.handle(req, res);
-  }
-);
+teamRoutes.delete("/:team_id/remove-pokemon/:pokemon_id", authMiddleware.auth, async (req, res) => {
+  return await removePokemonController.handle(req, res);
+});

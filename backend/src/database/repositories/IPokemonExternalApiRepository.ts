@@ -7,25 +7,10 @@ export interface IGetPokemonsDTO {
   offset: number;
 }
 
-export interface IResponsePaginationPokemonsDTO {
-  pokemons: IPokemonsExternal[];
-  pagination: {
-    limit: number;
-    offset: number;
-    total: number;
-  };
-}
-
-export interface IFindByTypeDTO{
-  type: string;
-  limit: number;
-  offset: number;
-}
-
 export interface IPokemonExternalApiRepository {
-  get(data: IGetPokemonsDTO): Promise<IResponsePaginationPokemonsDTO>;
+  get(data: IGetPokemonsDTO): Promise<IPokemonsExternal[]>;
   getTypes(): Promise<ITypesPokemons[]>;
   find(search: string | number): Promise<IPokemonsExternal | null>;
-  findByType(data: IFindByTypeDTO): Promise<IResponsePaginationPokemonsDTO>;
+  findByType(type: string): Promise<IPokemonsExternal[]>;
   findEvolutions(external_id: number): Promise<IEvolutions[]>;
 }

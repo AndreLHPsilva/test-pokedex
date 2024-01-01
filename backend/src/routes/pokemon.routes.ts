@@ -14,8 +14,7 @@ const getTypesController = new GetTypesController();
 const findController = new FindController();
 const findByTypeController = new FindByTypeController();
 
-// pokemonRoutes.get("/", authMiddleware.auth, async (req, res) => {
-pokemonRoutes.get("/", async (req, res) => {
+pokemonRoutes.get("/", authMiddleware.auth, async (req, res) => {
   return await getController.handle(req, res);
 });
 
@@ -27,7 +26,6 @@ pokemonRoutes.get("/find/:search", authMiddleware.auth, async (req, res) => {
   return await findController.handle(req, res);
 });
 
-// pokemonRoutes.get("/:type/type", authMiddleware.auth, async (req, res) => {
-pokemonRoutes.get("/type/:type", async (req, res) => {
+pokemonRoutes.get("/:type/type", authMiddleware.auth, async (req, res) => {
   return await findByTypeController.handle(req, res);
 });

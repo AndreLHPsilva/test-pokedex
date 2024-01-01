@@ -1,11 +1,6 @@
 import { inject, injectable } from "tsyringe";
-import { IPokemonExternalApiRepository, IResponsePaginationPokemonsDTO } from "@database/repositories/IPokemonExternalApiRepository";
-
-interface IRequestDTO{
-  type: string;
-  limit: number;
-  offset: number;
-}
+import { IPokemonsExternal } from "@models/PokemonsExternal";
+import { IPokemonExternalApiRepository } from "@database/repositories/IPokemonExternalApiRepository";
 
 @injectable()
 class FindByTypeUseCase {
@@ -14,8 +9,8 @@ class FindByTypeUseCase {
     private pokemonRepository: IPokemonExternalApiRepository
   ) {}
 
-  async execute(data: IRequestDTO): Promise<IResponsePaginationPokemonsDTO> {
-    return await this.pokemonRepository.findByType(data);
+  async execute(type: string): Promise<IPokemonsExternal[]> {
+    return await this.pokemonRepository.findByType(type);
   }
 }
 

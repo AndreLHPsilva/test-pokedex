@@ -7,7 +7,6 @@ import { IPokemonsExternal } from "@models/PokemonsExternal";
 import { IPokemons } from "@models/Pokemons";
 import { ITeamsOnPokemonsRepository } from "@database/repositories/ITeamsOnPokemonsRepository";
 import { ITeamsOnPokemons } from "@models/TeamsOnPokemons";
-import { ITeams } from "@models/Teams";
 
 interface IRemovePokemonDTO {
   team_id: string;
@@ -23,7 +22,10 @@ class RemovePokemonUseCase {
     private teamsOnPokemonsRepository: ITeamsOnPokemonsRepository
   ) {}
 
-  async execute({ team_id, pokemon_id }: IRemovePokemonDTO): Promise<ITeams> {
+  async execute({
+    team_id,
+    pokemon_id,
+  }: IRemovePokemonDTO): Promise<void> {
     const team = await this.teamRepository.find(team_id);
 
     if (!team) {
@@ -41,31 +43,19 @@ class RemovePokemonUseCase {
       team.id
     );
 
-    if (teamsOnPokemons.length == 0) {
+    if(teamsOnPokemons.length == 0){
       throw new ApiError("Time não tem pokemons relacionados!");
     }
 
-    const hasPokemonInTheTeam = teamsOnPokemons.find((teamOnPokemon) => {
+    const hasPokemonInTheTeam = teamsOnPokemons.find( teamOnPokemon => {
       return teamOnPokemon.pokemon?.id === pokemon_id;
-    });
+    })
 
-    if (!hasPokemonInTheTeam) {
+    if(!hasPokemonInTheTeam){
       throw new ApiError("Pokemon não encontrado no time!");
     }
 
-    await this.teamsOnPokemonsRepository.remove(hasPokemonInTheTeam.id);
-
-    let pokemons =
-      team.TeamsOnPokemons?.filter((teamOnPokemon) => {
-        return teamOnPokemon.pokemon?.id != pokemon_id;
-      })?.map((teamsOnPokemon) => {
-        return teamsOnPokemon.pokemon!;
-      }) ?? [];
-
-    delete team.TeamsOnPokemons;
-    team.pokemons = pokemons.sort((a, b) => a.external_id - b.external_id);
-
-    return team;
+    return await this.teamsOnPokemonsRepository.remove(hasPokemonInTheTeam.id);
   }
 }
 

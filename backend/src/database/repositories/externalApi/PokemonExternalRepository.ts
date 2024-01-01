@@ -12,10 +12,8 @@ import {
   ITypesPokemonsReponse,
 } from "./interfaces/IPokemonResponse";
 import {
-  IFindByTypeDTO,
   IGetPokemonsDTO,
   IPokemonExternalApiRepository,
-  IResponsePaginationPokemonsDTO,
 } from "../IPokemonExternalApiRepository";
 import { IEvolutions } from "@models/Evoluetions";
 import { ITypesPokemons } from "@models/TypesPokemons";
@@ -42,27 +40,13 @@ class PokemonExternalRepository implements IPokemonExternalApiRepository {
     private base_url = process.env.POKE_URL ?? "https://pokeapi.co/api/v2"
   ) {}
 
-  async get({
-    limit,
-    offset,
-  }: IGetPokemonsDTO): Promise<IResponsePaginationPokemonsDTO> {
+  async get({ limit, offset }: IGetPokemonsDTO): Promise<IPokemonsExternal[]> {
     try {
       const pokemons: IResponseGetAllPokemons = await axiosInstance.get(
         `${this.base_url}/pokemon?limit=${limit}&offset=${offset}`
       );
 
-      const total = pokemons.count;
-
-      if (pokemons.results.length == 0 && !pokemons.next) {
-        return {
-          pokemons: [],
-          pagination: {
-            limit,
-            offset,
-            total: 0,
-          },
-        };
-      }
+      if (pokemons.results.length == 0 && !pokemons.next) return [];
 
       const pokemonsReturn: IPokemonsExternal[] = [];
 
@@ -113,23 +97,9 @@ class PokemonExternalRepository implements IPokemonExternalApiRepository {
         })
       );
 
-      return {
-        pokemons: pokemonsReturn.sort((a, b) => a.id - b.id),
-        pagination: {
-          limit,
-          offset,
-          total,
-        },
-      };
+      return pokemonsReturn;
     } catch (error) {
-      return {
-        pokemons: [],
-        pagination: {
-          limit,
-          offset,
-          total: 0,
-        },
-      };
+      return [];
     }
   }
 
@@ -194,31 +164,18 @@ class PokemonExternalRepository implements IPokemonExternalApiRepository {
     }
   }
 
-  async findByType({
-    limit,
-    offset,
-    type,
-  }: IFindByTypeDTO): Promise<IResponsePaginationPokemonsDTO> {
+  async findByType(type: string): Promise<IPokemonsExternal[]> {
     try {
       const pokemons: IPokemonByTypeResponse = await axiosInstance.get(
         `${this.base_url}/type/${type}`
       );
 
-      if (pokemons.pokemon.length == 0)
-        return {
-          pokemons: [],
-          pagination: {
-            limit: limit,
-            offset: offset,
-            total: 0,
-          },
-        };
+      if (pokemons.pokemon.length == 0) return [];
 
       const pokemonsReturn: IPokemonsExternal[] = [];
-      const pokemonsForLoop = pokemons.pokemon.slice(offset, offset + limit);
 
       await Promise.all(
-        pokemonsForLoop.map(async (pokemon: IPokemonsByTypeResponse) => {
+        pokemons.pokemon.map(async (pokemon: IPokemonsByTypeResponse) => {
           const allInformationPokemon: IPokemonCompleted =
             await axiosInstance.get(pokemon.pokemon.url);
 
@@ -267,23 +224,9 @@ class PokemonExternalRepository implements IPokemonExternalApiRepository {
         })
       );
 
-      return {
-        pokemons: pokemonsReturn.sort((a,b) => a.id - b.id),
-        pagination: {
-          limit,
-          offset,
-          total: pokemons.pokemon.length,
-        },
-      };
+      return pokemonsReturn;
     } catch (error) {
-      return {
-        pokemons: [],
-        pagination: {
-          limit: limit,
-          offset: offset,
-          total: 0,
-        },
-      };
+      return [];
     }
   }
 
