@@ -14,6 +14,7 @@ class CreateValidation {
           invalid_type_error: "Nome deve ser uma string",
         })
         .min(1, { message: "O nome deve ter pelo menos 1 caracter" })
+        .trim(),
     });
 
     const validatedeDate = createUserSchema.safeParse(data);

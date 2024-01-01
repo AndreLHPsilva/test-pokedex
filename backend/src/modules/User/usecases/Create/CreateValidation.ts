@@ -15,13 +15,15 @@ class CreateValidation {
           required_error: "Nome é obrigatorio",
           invalid_type_error: "Nome deve ser uma string",
         })
-        .min(1, { message: "O nome deve ter pelo menos 1 caracter" }),
+        .min(1, { message: "O nome deve ter pelo menos 1 caracter" })
+        .trim(),
       email: z
         .string({
           required_error: "Email é obrigatorio",
           invalid_type_error: "Email deve ser uma string",
         })
-        .email("O campo deve ser um email valido"),
+        .email("O campo deve ser um email valido")
+        .trim(),
       password: z
         .string({
           required_error: "Senha é obrigatorio",

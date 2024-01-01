@@ -3,7 +3,6 @@ import { inject, injectable } from "tsyringe";
 import { ITeams } from "@models/Teams";
 import { ApiError } from "@errors/ApiError";
 
-
 @injectable()
 class FindByUserUseCase {
   constructor(
@@ -19,7 +18,7 @@ class FindByUserUseCase {
 
     const pokemons = team.TeamsOnPokemons?.map((teamOnPokemon) => {
       return teamOnPokemon.pokemon!;
-    });
+    }).sort((a, b) => a.external_id - b.external_id);
 
     delete team.TeamsOnPokemons;
 
