@@ -25,7 +25,7 @@ class AddPokemonUseCase {
     private teamsOnPokemonsRepository: ITeamsOnPokemonsRepository
   ) {}
 
-  async execute({ user_id, external_id }: IAddPokemonDTO): Promise<ITeamsOnPokemons> {
+  async execute({ user_id, external_id }: IAddPokemonDTO): Promise<ITeams> {
     let pokemon: IPokemonsExternal | IPokemons | null =
       await this.pokemonRepository.findExternalId(external_id);
 
@@ -38,8 +38,8 @@ class AddPokemonUseCase {
 
       pokemon = await this.pokemonRepository.create({
         external_id: pokemon.id,
-        name: pokemon.name
-      })
+        name: pokemon.name,
+      });
     }
 
     const team = await this.teamRepository.findByUserId(user_id);
@@ -58,18 +58,32 @@ class AddPokemonUseCase {
       );
     }
 
-    const alreadyExistsThisPokemon = teamsOnPokemons.find( teamOnPokemon => teamOnPokemon.pokemon?.external_id == external_id )
+    const alreadyExistsThisPokemon = teamsOnPokemons.find(
+      (teamOnPokemon) => teamOnPokemon.pokemon?.external_id == external_id
+    );
 
-    if(!!alreadyExistsThisPokemon){
-      throw new ApiError(
-        "Este pokemon já pertence ao seu time!"
-      );
+    if (!!alreadyExistsThisPokemon) {
+      throw new ApiError("Este pokemon já pertence ao seu time!");
     }
 
-    return await this.teamsOnPokemonsRepository.create({
+    await this.teamsOnPokemonsRepository.create({
       team_id: team.id,
       pokemon_id: pokemon.id,
     });
+
+    let pokemons = team.TeamsOnPokemons?.map((teamOnPokemon) => {
+      return teamOnPokemon.pokemon!;
+    });
+
+    if (!pokemons || pokemons.length == 0) {
+      pokemons = [];
+    }
+
+    pokemons?.push(pokemon);
+    delete team.TeamsOnPokemons;
+    team.pokemons = pokemons.sort((a, b) => a.external_id - b.external_id);
+
+    return team;
   }
 }
 

@@ -15,15 +15,21 @@ class CreateUseCase {
   ) {}
 
   async execute({ name, user_id }: ICreateDTO): Promise<ITeams> {
-    const verifyAlreadyExistsTeam =  await this.teamRepository.findByUserId(user_id);
+    const verifyAlreadyExistsTeam = await this.teamRepository.findByUserId(
+      user_id
+    );
 
-    if(!!verifyAlreadyExistsTeam){
+    if (!!verifyAlreadyExistsTeam) {
       throw new ApiError("Usuário já tem um time criado!");
     }
 
-    return await this.teamRepository.create({
-      name, user_id
+    const responseTeam = await this.teamRepository.create({
+      name,
+      user_id,
     });
+    responseTeam.pokemons = [];
+
+    return responseTeam;
   }
 }
 

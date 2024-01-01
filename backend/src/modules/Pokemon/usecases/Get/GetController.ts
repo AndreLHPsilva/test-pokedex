@@ -5,10 +5,13 @@ import { GetUseCase } from "./GetUseCase";
 
 class GetController {
   async handle(req: Request, res: Response) {
-    const data = GetValidation.validate(req.query);
+    const { limit, offset } = GetValidation.validate(req.query);
 
     const getUseCase = container.resolve(GetUseCase);
-    const response = await getUseCase.execute(data);
+    const response = await getUseCase.execute({
+      limit: Number(limit),
+      offset: Number(offset)
+    });
 
     return res.returnApi({
       data: response,

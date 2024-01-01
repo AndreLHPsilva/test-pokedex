@@ -3,14 +3,20 @@ import { container } from "tsyringe";
 import { FindByTypeValidation } from "./FindByTypeValidation";
 import { FindByTypeUseCase } from "./FindByTypeUseCase";
 
-
 class FindByTypeController {
   async handle(req: Request, res: Response) {
-    const { type } = FindByTypeValidation.validate(req.params);
+    const { limit, offset, type } = FindByTypeValidation.validate({
+      ...req.params,
+      ...req.query,
+    });
 
     const findByTypeUseCase = container.resolve(FindByTypeUseCase);
-    const response = await findByTypeUseCase.execute(type);
-    
+    const response = await findByTypeUseCase.execute({
+      type,
+      limit: Number(limit),
+      offset: Number(offset)
+    });
+
     return res.returnApi({
       data: response,
       statusHTTP: 200,
