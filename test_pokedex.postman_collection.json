@@ -1,0 +1,3284 @@
+{
+	"info": {
+		"_postman_id": "ade51884-7ee5-49d8-bdcf-cb150c95d874",
+		"name": "Test Pokedex",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32027385"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"teste\",\r\n    \"email\": \"teste@teste.com\",\r\n    \"password\": \"123456789\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/users",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "201",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Teste\",\r\n    \"email\": \"teste2@teste.com\",\r\n    \"password\": \"123456789\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/users",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "271"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"10f-jBdE+nXAFmYlVqYjd64rVxamkWk\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 29 Dec 2023 23:19:00 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"id\": \"024ab89d-8431-4d0f-bf6d-189b7d508d07\",\n        \"name\": \"Teste\",\n        \"email\": \"teste2@teste.com\",\n        \"created_at\": \"2023-12-29T23:19:00.921Z\",\n        \"updated_at\": \"2023-12-29T23:19:00.921Z\"\n    },\n    \"statusHTTP\": 201,\n    \"message\": \"Cadastro realizado com sucesso!\",\n    \"developerMessage\": \"User Created\"\n}"
+						},
+						{
+							"name": "400 - E-mail",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Teste\",\r\n    \"email\": \"teste@teste.com\",\r\n    \"password\": \"123456789\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/users",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "137"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"89-SraJiWOI5TvKiJOSJLzoyUytHWw\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 29 Dec 2023 23:18:33 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": null,\n    \"statusHTTP\": 400,\n    \"message\": \"Este e-mail já esta sendo utilizado\",\n    \"developerMessage\": \"Este e-mail já esta sendo utilizado\"\n}"
+						},
+						{
+							"name": "400 - Senha",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Teste\",\r\n    \"email\": \"teste3@teste.com\",\r\n    \"password\": \"123456\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/users",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "149"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"95-YXgbkok3WPmQPi3T9RvM4yCSRcQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 29 Dec 2023 23:19:27 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": null,\n    \"statusHTTP\": 400,\n    \"message\": \"Senha deve possuir no mínimo 9 caracteres\",\n    \"developerMessage\": \"Senha deve possuir no mínimo 9 caracteres\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonRequest = JSON.parse(responseBody);\r",
+									"postman.setEnvironmentVariable(\"token\", jsonRequest.data.token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"teste@teste.com\",\r\n    \"password\": \"123456789\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/users/signin",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users",
+								"signin"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"teste@teste.com\",\r\n    \"password\": \"123456789\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/users/signin",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users",
+										"signin"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "700"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2bc-yY/7q41OB/cFY8ShxgSLOjF2mqk\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 31 Dec 2023 20:37:47 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MDQwNTUwNjcsImV4cCI6MTcwNDE0MTQ2Nywic3ViIjoiMjQ3N2UyODgtMzk3YS00NmU0LWI1MzMtMzdjYTMyZTY1NzYxIn0.RDJKeeI4k6vu60SadrrAYPwz-wPY5cOtgnGCsAYuBHA\",\n        \"user\": {\n            \"id\": \"2477e288-397a-46e4-b533-37ca32e65761\",\n            \"name\": \"Teste\",\n            \"email\": \"teste@teste.com\",\n            \"created_at\": \"2023-12-31T20:21:06.568Z\",\n            \"updated_at\": \"2023-12-31T20:21:06.568Z\",\n            \"team\": {\n                \"id\": \"59d3b733-b111-463a-b8dc-5f7f2535b089\",\n                \"name\": \"Time Padilha\",\n                \"created_at\": \"2023-12-31T20:21:27.470Z\",\n                \"updated_at\": \"2023-12-31T20:21:27.470Z\",\n                \"user_id\": \"2477e288-397a-46e4-b533-37ca32e65761\",\n                \"pokemons\": []\n            }\n        }\n    },\n    \"statusHTTP\": 200,\n    \"message\": \"Login realizado com sucesso\",\n    \"developerMessage\": \"Sign in with success\"\n}"
+						},
+						{
+							"name": "400",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"teste@teste.comm\",\r\n    \"password\": \"123456789\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/users/signin",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users",
+										"signin"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "119"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"77-hgaJ7AQyIbAB2gsjXLPx/+ljQ14\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 29 Dec 2023 23:17:54 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": null,\n    \"statusHTTP\": 400,\n    \"message\": \"E-mail ou senha incorretos.\",\n    \"developerMessage\": \"E-mail ou senha incorretos.\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Teams",
+			"item": [
+				{
+					"name": "Create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Time Padilha\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/teams/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"teams",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "201",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Time Padilha\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/teams/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"teams",
+										""
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "307"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"133-7CfwO3mCJKmEnltOmkmyoFBxUr0\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 31 Dec 2023 20:15:47 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"id\": \"c1dc400e-0d73-498f-94b5-7686a0bb8b26\",\n        \"name\": \"Time Padilha\",\n        \"created_at\": \"2023-12-31T20:15:47.529Z\",\n        \"updated_at\": \"2023-12-31T20:15:47.529Z\",\n        \"user_id\": \"079e386f-c208-42fb-ae6e-52ff89b0e052\",\n        \"pokemons\": []\n    },\n    \"statusHTTP\": 201,\n    \"message\": \"Time criado com sucesso!\",\n    \"developerMessage\": \"Team Created\"\n}"
+						},
+						{
+							"name": "400",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Time Padilha\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/teams/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"teams",
+										""
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "129"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"81-HZD4E+RrKQJogEw/AjQXBqnGDN4\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 29 Dec 2023 23:21:36 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": null,\n    \"statusHTTP\": 400,\n    \"message\": \"Usuário já tem um time criado!\",\n    \"developerMessage\": \"Usuário já tem um time criado!\"\n}"
+						},
+						{
+							"name": "401",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Time Padilha\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/teams/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"teams",
+										""
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "123"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"7b-JPQ0nubjuqISqLoCah84Ao5DKwA\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 29 Dec 2023 23:22:53 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": null,\n    \"statusHTTP\": 401,\n    \"message\": \"O token de acesso é invalido\",\n    \"developerMessage\": \"O token de acesso é invalido\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Add Pokemon",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"external_id\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/teams/add-pokemon",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"teams",
+								"add-pokemon"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "201",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"external_id\": 1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/teams/add-pokemon",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"teams",
+										"add-pokemon"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "471"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1d7-0P0q+aRBC+n3lpV20aErbjh4a+M\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 01 Jan 2024 22:17:02 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"id\": \"159eb452-0e8e-40a8-abc0-811fd872ea6e\",\n        \"name\": \"Time Padilha\",\n        \"created_at\": \"2024-01-01T22:16:50.198Z\",\n        \"updated_at\": \"2024-01-01T22:16:50.198Z\",\n        \"user_id\": \"9757e195-0a2d-4948-9a64-656c73f24a14\",\n        \"pokemons\": [\n            {\n                \"id\": \"27ccefc6-ea87-4d03-b7b0-ab6b08f77af2\",\n                \"name\": \"bulbasaur\",\n                \"external_id\": 1,\n                \"created_at\": \"2024-01-01T22:17:02.453Z\",\n                \"updated_at\": \"2024-01-01T22:17:02.453Z\"\n            }\n        ]\n    },\n    \"statusHTTP\": 201,\n    \"message\": \"Pokemon Adicionado ao time!\",\n    \"developerMessage\": \"Pokemon added\"\n}"
+						},
+						{
+							"name": "400",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"external_id\": 10000000\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/teams/add-pokemon",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"teams",
+										"add-pokemon"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "113"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"71-NlnYZIU1bF3yP7bMKfbtRqvW54A\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 29 Dec 2023 23:26:35 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": null,\n    \"statusHTTP\": 400,\n    \"message\": \"Pokemon não encontrado!\",\n    \"developerMessage\": \"Pokemon não encontrado!\"\n}"
+						},
+						{
+							"name": "400",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"external_id\": 6\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/teams/add-pokemon",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"teams",
+										"add-pokemon"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "181"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"b5-Led2bfAPpbawYxKX4TfHJPlr2wU\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 29 Dec 2023 23:27:23 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": null,\n    \"statusHTTP\": 400,\n    \"message\": \"Time já chegou no limite máximo de pokemons, 5 por time!\",\n    \"developerMessage\": \"Time já chegou no limite máximo de pokemons, 5 por time!\"\n}"
+						},
+						{
+							"name": "400",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"external_id\": 1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/teams/add-pokemon",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"teams",
+										"add-pokemon"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "141"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"8d-vUBsi2NJZNA/k5zLGglghW/95qE\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 30 Dec 2023 00:12:37 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": null,\n    \"statusHTTP\": 400,\n    \"message\": \"Este pokemon já pertence ao seu time!\",\n    \"developerMessage\": \"Este pokemon já pertence ao seu time!\"\n}"
+						},
+						{
+							"name": "401",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"external_id\": 1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/teams/add-pokemon",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"teams",
+										"add-pokemon"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "125"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"7d-qZxr5JKqbsZAjDWi5loAtUOetg4\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 30 Dec 2023 00:15:13 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": null,\n    \"statusHTTP\": 401,\n    \"message\": \"Token de acesso não informado\",\n    \"developerMessage\": \"Token de acesso não informado\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Remove Pokemon",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/teams/159eb452-0e8e-40a8-abc0-811fd872ea6e/remove-pokemon/27ccefc6-ea87-4d03-b7b0-ab6b08f77af2",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"teams",
+								"159eb452-0e8e-40a8-abc0-811fd872ea6e",
+								"remove-pokemon",
+								"27ccefc6-ea87-4d03-b7b0-ab6b08f77af2"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/teams/159eb452-0e8e-40a8-abc0-811fd872ea6e/remove-pokemon/27ccefc6-ea87-4d03-b7b0-ab6b08f77af2",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"teams",
+										"159eb452-0e8e-40a8-abc0-811fd872ea6e",
+										"remove-pokemon",
+										"27ccefc6-ea87-4d03-b7b0-ab6b08f77af2"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "315"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"13b-hzv0QJH0yJrhfzDHkBlH1ozVfZc\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 01 Jan 2024 22:18:05 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"id\": \"159eb452-0e8e-40a8-abc0-811fd872ea6e\",\n        \"name\": \"Time Padilha\",\n        \"created_at\": \"2024-01-01T22:16:50.198Z\",\n        \"updated_at\": \"2024-01-01T22:16:50.198Z\",\n        \"user_id\": \"9757e195-0a2d-4948-9a64-656c73f24a14\",\n        \"pokemons\": []\n    },\n    \"statusHTTP\": 200,\n    \"message\": \"Pokemon removido com sucesso!\",\n    \"developerMessage\": \"Pokemon removed\"\n}"
+						},
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/teams/159eb452-0e8e-40a8-abc0-811fd872ea6e/remove-pokemon/27ccefc6-ea87-4d03-b7b0-ab6b08f77af2",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"teams",
+										"159eb452-0e8e-40a8-abc0-811fd872ea6e",
+										"remove-pokemon",
+										"27ccefc6-ea87-4d03-b7b0-ab6b08f77af2"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "473"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1d9-2aP4AkWyLvJK2CAHDT9sxaUTvQI\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 01 Jan 2024 22:18:43 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"id\": \"159eb452-0e8e-40a8-abc0-811fd872ea6e\",\n        \"name\": \"Time Padilha\",\n        \"created_at\": \"2024-01-01T22:16:50.198Z\",\n        \"updated_at\": \"2024-01-01T22:16:50.198Z\",\n        \"user_id\": \"9757e195-0a2d-4948-9a64-656c73f24a14\",\n        \"pokemons\": [\n            {\n                \"id\": \"15efe944-a55b-4424-ab29-8a4fcd7db0c3\",\n                \"name\": \"ivysaur\",\n                \"external_id\": 2,\n                \"created_at\": \"2024-01-01T22:18:33.029Z\",\n                \"updated_at\": \"2024-01-01T22:18:33.029Z\"\n            }\n        ]\n    },\n    \"statusHTTP\": 200,\n    \"message\": \"Pokemon removido com sucesso!\",\n    \"developerMessage\": \"Pokemon removed\"\n}"
+						},
+						{
+							"name": "400",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/teams/eb03da58-7081-47ae-b04b-d7b0c861daf5/remove-pokemon/5cba5bf5-938f-468b-8a8c-524235595e26",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"teams",
+										"eb03da58-7081-47ae-b04b-d7b0c861daf5",
+										"remove-pokemon",
+										"5cba5bf5-938f-468b-8a8c-524235595e26"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "129"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"81-WtWQwPRHqrFICBPov2VHOK9OdMA\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 30 Dec 2023 00:13:14 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": null,\n    \"statusHTTP\": 400,\n    \"message\": \"Pokemon não encontrado no time!\",\n    \"developerMessage\": \"Pokemon não encontrado no time!\"\n}"
+						},
+						{
+							"name": "400",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/teams/s/remove-pokemon/5cba5bf5-938f-468b-8a8c-524235595e26",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"teams",
+										"s",
+										"remove-pokemon",
+										"5cba5bf5-938f-468b-8a8c-524235595e26"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "107"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"6b-XP5WI9yLK8CBTse/9E88MygjsXc\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 30 Dec 2023 00:14:11 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": null,\n    \"statusHTTP\": 400,\n    \"message\": \"Time não encontrado!\",\n    \"developerMessage\": \"Time não encontrado!\"\n}"
+						},
+						{
+							"name": "400",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/teams/eb03da58-7081-47ae-b04b-d7b0c861daf5/remove-pokemon/s",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"teams",
+										"eb03da58-7081-47ae-b04b-d7b0c861daf5",
+										"remove-pokemon",
+										"s"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "113"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"71-NlnYZIU1bF3yP7bMKfbtRqvW54A\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 30 Dec 2023 00:14:27 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": null,\n    \"statusHTTP\": 400,\n    \"message\": \"Pokemon não encontrado!\",\n    \"developerMessage\": \"Pokemon não encontrado!\"\n}"
+						},
+						{
+							"name": "401",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/teams/eb03da58-7081-47ae-b04b-d7b0c861daf5/remove-pokemon/5cba5bf5-938f-468b-8a8c-524235595e26",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"teams",
+										"eb03da58-7081-47ae-b04b-d7b0c861daf5",
+										"remove-pokemon",
+										"5cba5bf5-938f-468b-8a8c-524235595e26"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "125"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"7d-qZxr5JKqbsZAjDWi5loAtUOetg4\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 30 Dec 2023 00:14:48 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": null,\n    \"statusHTTP\": 401,\n    \"message\": \"Token de acesso não informado\",\n    \"developerMessage\": \"Token de acesso não informado\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Find",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/teams/159eb452-0e8e-40a8-abc0-811fd872ea6e",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"teams",
+								"159eb452-0e8e-40a8-abc0-811fd872ea6e"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 - With Pokemons",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/teams/bf2fda47-ffa8-4f0b-b6c1-0e72597e9735",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"teams",
+										"bf2fda47-ffa8-4f0b-b6c1-0e72597e9735"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1102"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"44e-Ir3MPKAuN5186lImErQKeBBI5T0\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 29 Dec 2023 23:27:56 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"pokemons\": [\n            {\n                \"id\": \"d88bbfe3-cc05-47d9-a197-8229d6942c32\",\n                \"name\": \"bulbasaur\",\n                \"external_id\": 1,\n                \"created_at\": \"2023-12-29T23:26:50.133Z\",\n                \"updated_at\": \"2023-12-29T23:26:50.133Z\"\n            },\n            {\n                \"id\": \"52c88a88-7f9c-40be-9dc8-d6e14a49bd32\",\n                \"name\": \"ivysaur\",\n                \"external_id\": 2,\n                \"created_at\": \"2023-12-29T23:27:09.164Z\",\n                \"updated_at\": \"2023-12-29T23:27:09.164Z\"\n            },\n            {\n                \"id\": \"d3185f66-54b9-4296-a2d4-cc613d688adb\",\n                \"name\": \"venusaur\",\n                \"external_id\": 3,\n                \"created_at\": \"2023-12-29T23:27:13.595Z\",\n                \"updated_at\": \"2023-12-29T23:27:13.595Z\"\n            },\n            {\n                \"id\": \"e67196da-1711-4379-b4b7-826775e982b6\",\n                \"name\": \"charmander\",\n                \"external_id\": 4,\n                \"created_at\": \"2023-12-29T23:27:17.077Z\",\n                \"updated_at\": \"2023-12-29T23:27:17.077Z\"\n            },\n            {\n                \"id\": \"32a399e1-9bf6-4715-95d6-b4a2635b7d8a\",\n                \"name\": \"charmeleon\",\n                \"external_id\": 5,\n                \"created_at\": \"2023-12-29T23:27:20.064Z\",\n                \"updated_at\": \"2023-12-29T23:27:20.064Z\"\n            }\n        ],\n        \"id\": \"bf2fda47-ffa8-4f0b-b6c1-0e72597e9735\",\n        \"name\": \"Time Padilha\",\n        \"created_at\": \"2023-12-29T23:25:07.560Z\",\n        \"updated_at\": \"2023-12-29T23:25:07.560Z\",\n        \"user_id\": \"892c6a86-2b1e-45f9-b932-477dde7694c7\"\n    },\n    \"statusHTTP\": 200,\n    \"message\": \"Time encontrado!\",\n    \"developerMessage\": \"Team founded\"\n}"
+						},
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/teams/bf2fda47-ffa8-4f0b-b6c1-0e72597e9735",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"teams",
+										"bf2fda47-ffa8-4f0b-b6c1-0e72597e9735"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "299"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"12b-pbg+arNahXpldcUGD4ux9mBIQxc\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 29 Dec 2023 23:25:56 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"pokemons\": [],\n        \"id\": \"bf2fda47-ffa8-4f0b-b6c1-0e72597e9735\",\n        \"name\": \"Time Padilha\",\n        \"created_at\": \"2023-12-29T23:25:07.560Z\",\n        \"updated_at\": \"2023-12-29T23:25:07.560Z\",\n        \"user_id\": \"892c6a86-2b1e-45f9-b932-477dde7694c7\"\n    },\n    \"statusHTTP\": 200,\n    \"message\": \"Time encontrado!\",\n    \"developerMessage\": \"Team founded\"\n}"
+						},
+						{
+							"name": "401",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/teams/6b728dec-bd1d-4246-9b73-2828d550b195",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"teams",
+										"6b728dec-bd1d-4246-9b73-2828d550b195"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "125"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"7d-qZxr5JKqbsZAjDWi5loAtUOetg4\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 29 Dec 2023 23:25:21 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": null,\n    \"statusHTTP\": 401,\n    \"message\": \"Token de acesso não informado\",\n    \"developerMessage\": \"Token de acesso não informado\"\n}"
+						},
+						{
+							"name": "400",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/teams/6b728dec-bd1d-4246-9b73-2828d550b195",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"teams",
+										"6b728dec-bd1d-4246-9b73-2828d550b195"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "107"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"6b-ythEexRFk6LKqZDFmgIZsf6+pHA\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 29 Dec 2023 23:25:34 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": null,\n    \"statusHTTP\": 400,\n    \"message\": \"Time não encontrado.\",\n    \"developerMessage\": \"Time não encontrado.\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Find By User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/teams/by-auth",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"teams",
+								"by-auth"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/teams/by-auth",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"teams",
+										"by-auth"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1102"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"44e-Ir3MPKAuN5186lImErQKeBBI5T0\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 29 Dec 2023 23:32:05 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"pokemons\": [\n            {\n                \"id\": \"d88bbfe3-cc05-47d9-a197-8229d6942c32\",\n                \"name\": \"bulbasaur\",\n                \"external_id\": 1,\n                \"created_at\": \"2023-12-29T23:26:50.133Z\",\n                \"updated_at\": \"2023-12-29T23:26:50.133Z\"\n            },\n            {\n                \"id\": \"52c88a88-7f9c-40be-9dc8-d6e14a49bd32\",\n                \"name\": \"ivysaur\",\n                \"external_id\": 2,\n                \"created_at\": \"2023-12-29T23:27:09.164Z\",\n                \"updated_at\": \"2023-12-29T23:27:09.164Z\"\n            },\n            {\n                \"id\": \"d3185f66-54b9-4296-a2d4-cc613d688adb\",\n                \"name\": \"venusaur\",\n                \"external_id\": 3,\n                \"created_at\": \"2023-12-29T23:27:13.595Z\",\n                \"updated_at\": \"2023-12-29T23:27:13.595Z\"\n            },\n            {\n                \"id\": \"e67196da-1711-4379-b4b7-826775e982b6\",\n                \"name\": \"charmander\",\n                \"external_id\": 4,\n                \"created_at\": \"2023-12-29T23:27:17.077Z\",\n                \"updated_at\": \"2023-12-29T23:27:17.077Z\"\n            },\n            {\n                \"id\": \"32a399e1-9bf6-4715-95d6-b4a2635b7d8a\",\n                \"name\": \"charmeleon\",\n                \"external_id\": 5,\n                \"created_at\": \"2023-12-29T23:27:20.064Z\",\n                \"updated_at\": \"2023-12-29T23:27:20.064Z\"\n            }\n        ],\n        \"id\": \"bf2fda47-ffa8-4f0b-b6c1-0e72597e9735\",\n        \"name\": \"Time Padilha\",\n        \"created_at\": \"2023-12-29T23:25:07.560Z\",\n        \"updated_at\": \"2023-12-29T23:25:07.560Z\",\n        \"user_id\": \"892c6a86-2b1e-45f9-b932-477dde7694c7\"\n    },\n    \"statusHTTP\": 200,\n    \"message\": \"Time encontrado!\",\n    \"developerMessage\": \"Team founded\"\n}"
+						},
+						{
+							"name": "401",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/teams/by-auth",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"teams",
+										"by-auth"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "125"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"7d-qZxr5JKqbsZAjDWi5loAtUOetg4\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 29 Dec 2023 23:32:32 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": null,\n    \"statusHTTP\": 401,\n    \"message\": \"Token de acesso não informado\",\n    \"developerMessage\": \"Token de acesso não informado\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Teste atualização\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/teams/931abe9a-3a5a-4428-8a8a-8a396777e310",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"teams",
+								"931abe9a-3a5a-4428-8a8a-8a396777e310"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Teste atualização 2\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/teams/159eb452-0e8e-40a8-abc0-811fd872ea6e",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"teams",
+										"159eb452-0e8e-40a8-abc0-811fd872ea6e"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "466"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1d2-RuIIaAAtmchAJQEgXwxFb3tXq8U\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 01 Jan 2024 22:20:26 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"pokemons\": [\n            {\n                \"id\": \"15efe944-a55b-4424-ab29-8a4fcd7db0c3\",\n                \"name\": \"ivysaur\",\n                \"external_id\": 2,\n                \"created_at\": \"2024-01-01T22:18:33.029Z\",\n                \"updated_at\": \"2024-01-01T22:18:33.029Z\"\n            }\n        ],\n        \"id\": \"159eb452-0e8e-40a8-abc0-811fd872ea6e\",\n        \"name\": \"Teste atualização 2\",\n        \"created_at\": \"2024-01-01T22:16:50.198Z\",\n        \"updated_at\": \"2024-01-01T22:20:26.633Z\",\n        \"user_id\": \"9757e195-0a2d-4948-9a64-656c73f24a14\"\n    },\n    \"statusHTTP\": 200,\n    \"message\": \"Time atualizado!\",\n    \"developerMessage\": \"Team updated\"\n}"
+						},
+						{
+							"name": "400",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Teste atualização 2\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/teams/159eb452-0e8e-40a8-abc0-811fd872ea6",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"teams",
+										"159eb452-0e8e-40a8-abc0-811fd872ea6"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "107"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"6b-ythEexRFk6LKqZDFmgIZsf6+pHA\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 01 Jan 2024 22:20:38 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": null,\n    \"statusHTTP\": 400,\n    \"message\": \"Time não encontrado.\",\n    \"developerMessage\": \"Time não encontrado.\"\n}"
+						},
+						{
+							"name": "401",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Teste atualização 2\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/teams/159eb452-0e8e-40a8-abc0-811fd872ea6",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"teams",
+										"159eb452-0e8e-40a8-abc0-811fd872ea6"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "125"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"7d-qZxr5JKqbsZAjDWi5loAtUOetg4\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 01 Jan 2024 22:20:53 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": null,\n    \"statusHTTP\": 401,\n    \"message\": \"Token de acesso não informado\",\n    \"developerMessage\": \"Token de acesso não informado\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Pokemons",
+			"item": [
+				{
+					"name": "Get",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/pokemons?limit=20&offset=1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"pokemons"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "20"
+								},
+								{
+									"key": "offset",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/pokemons?limit=20&offset=1",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"pokemons"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "20"
+										},
+										{
+											"key": "offset",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "11422"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2c9e-GRfnbjMoGlUtpYOiigNIq+TTlt4\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 01 Jan 2024 22:21:15 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"pokemons\": [\n            {\n                \"id\": 2,\n                \"weight\": 130,\n                \"base_experience\": 142,\n                \"height\": 10,\n                \"name\": \"ivysaur\",\n                \"abilities\": [\n                    \"overgrow\",\n                    \"chlorophyll\"\n                ],\n                \"types\": [\n                    \"grass\",\n                    \"poison\"\n                ],\n                \"stats\": [\n                    {\n                        \"name\": \"hp\",\n                        \"qnt\": 60\n                    },\n                    {\n                        \"name\": \"attack\",\n                        \"qnt\": 62\n                    },\n                    {\n                        \"name\": \"defense\",\n                        \"qnt\": 63\n                    },\n                    {\n                        \"name\": \"special-attack\",\n                        \"qnt\": 80\n                    },\n                    {\n                        \"name\": \"special-defense\",\n                        \"qnt\": 80\n                    },\n                    {\n                        \"name\": \"speed\",\n                        \"qnt\": 60\n                    }\n                ],\n                \"img_url\": \"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/2.gif\",\n                \"evolutions\": [\n                    {\n                        \"name\": \"bulbasaur\",\n                        \"position\": 1\n                    },\n                    {\n                        \"name\": \"ivysaur\",\n                        \"position\": 2\n                    },\n                    {\n                        \"name\": \"venusaur\",\n                        \"position\": 3\n                    }\n                ]\n            },\n            {\n                \"id\": 3,\n                \"weight\": 1000,\n                \"base_experience\": 263,\n                \"height\": 20,\n                \"name\": \"venusaur\",\n                \"abilities\": [\n                    \"overgrow\",\n                    \"chlorophyll\"\n                ],\n                \"types\": [\n                    \"grass\",\n                    \"poison\"\n                ],\n                \"stats\": [\n                    {\n                        \"name\": \"hp\",\n                        \"qnt\": 80\n                    },\n                    {\n                        \"name\": \"attack\",\n                        \"qnt\": 82\n                    },\n                    {\n                        \"name\": \"defense\",\n                        \"qnt\": 83\n                    },\n                    {\n                        \"name\": \"special-attack\",\n                        \"qnt\": 100\n                    },\n                    {\n                        \"name\": \"special-defense\",\n                        \"qnt\": 100\n                    },\n                    {\n                        \"name\": \"speed\",\n                        \"qnt\": 80\n                    }\n                ],\n                \"img_url\": \"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/3.gif\",\n                \"evolutions\": [\n                    {\n                        \"name\": \"bulbasaur\",\n                        \"position\": 1\n                    },\n                    {\n                        \"name\": \"ivysaur\",\n                        \"position\": 2\n                    },\n                    {\n                        \"name\": \"venusaur\",\n                        \"position\": 3\n                    }\n                ]\n            },\n            {\n                \"id\": 4,\n                \"weight\": 85,\n                \"base_experience\": 62,\n                \"height\": 6,\n                \"name\": \"charmander\",\n                \"abilities\": [\n                    \"blaze\",\n                    \"solar-power\"\n                ],\n                \"types\": [\n                    \"fire\"\n                ],\n                \"stats\": [\n                    {\n                        \"name\": \"hp\",\n                        \"qnt\": 39\n                    },\n                    {\n                        \"name\": \"attack\",\n                        \"qnt\": 52\n                    },\n                    {\n                        \"name\": \"defense\",\n                        \"qnt\": 43\n                    },\n                    {\n                        \"name\": \"special-attack\",\n                        \"qnt\": 60\n                    },\n                    {\n                        \"name\": \"special-defense\",\n                        \"qnt\": 50\n                    },\n                    {\n                        \"name\": \"speed\",\n                        \"qnt\": 65\n                    }\n                ],\n                \"img_url\": \"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/4.gif\",\n                \"evolutions\": [\n                    {\n                        \"name\": \"charmander\",\n                        \"position\": 1\n                    },\n                    {\n                        \"name\": \"charmeleon\",\n                        \"position\": 2\n                    },\n                    {\n                        \"name\": \"charizard\",\n                        \"position\": 3\n                    }\n                ]\n            },\n            {\n                \"id\": 5,\n                \"weight\": 190,\n                \"base_experience\": 142,\n                \"height\": 11,\n                \"name\": \"charmeleon\",\n                \"abilities\": [\n                    \"blaze\",\n                    \"solar-power\"\n                ],\n                \"types\": [\n                    \"fire\"\n                ],\n                \"stats\": [\n                    {\n                        \"name\": \"hp\",\n                        \"qnt\": 58\n                    },\n                    {\n                        \"name\": \"attack\",\n                        \"qnt\": 64\n                    },\n                    {\n                        \"name\": \"defense\",\n                        \"qnt\": 58\n                    },\n                    {\n                        \"name\": \"special-attack\",\n                        \"qnt\": 80\n                    },\n                    {\n                        \"name\": \"special-defense\",\n                        \"qnt\": 65\n                    },\n                    {\n                        \"name\": \"speed\",\n                        \"qnt\": 80\n                    }\n                ],\n                \"img_url\": \"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/5.gif\",\n                \"evolutions\": [\n                    {\n                        \"name\": \"charmander\",\n                        \"position\": 1\n                    },\n                    {\n                        \"name\": \"charmeleon\",\n                        \"position\": 2\n                    },\n                    {\n                        \"name\": \"charizard\",\n                        \"position\": 3\n                    }\n                ]\n            },\n            {\n                \"id\": 6,\n                \"weight\": 905,\n                \"base_experience\": 267,\n                \"height\": 17,\n                \"name\": \"charizard\",\n                \"abilities\": [\n                    \"blaze\",\n                    \"solar-power\"\n                ],\n                \"types\": [\n                    \"fire\",\n                    \"flying\"\n                ],\n                \"stats\": [\n                    {\n                        \"name\": \"hp\",\n                        \"qnt\": 78\n                    },\n                    {\n                        \"name\": \"attack\",\n                        \"qnt\": 84\n                    },\n                    {\n                        \"name\": \"defense\",\n                        \"qnt\": 78\n                    },\n                    {\n                        \"name\": \"special-attack\",\n                        \"qnt\": 109\n                    },\n                    {\n                        \"name\": \"special-defense\",\n                        \"qnt\": 85\n                    },\n                    {\n                        \"name\": \"speed\",\n                        \"qnt\": 100\n                    }\n                ],\n                \"img_url\": \"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/6.gif\",\n                \"evolutions\": [\n                    {\n                        \"name\": \"charmander\",\n                        \"position\": 1\n                    },\n                    {\n                        \"name\": \"charmeleon\",\n                        \"position\": 2\n                    },\n                    {\n                        \"name\": \"charizard\",\n                        \"position\": 3\n                    }\n                ]\n            },\n            {\n                \"id\": 7,\n                \"weight\": 90,\n                \"base_experience\": 63,\n                \"height\": 5,\n                \"name\": \"squirtle\",\n                \"abilities\": [\n                    \"torrent\",\n                    \"rain-dish\"\n                ],\n                \"types\": [\n                    \"water\"\n                ],\n                \"stats\": [\n                    {\n                        \"name\": \"hp\",\n                        \"qnt\": 44\n                    },\n                    {\n                        \"name\": \"attack\",\n                        \"qnt\": 48\n                    },\n                    {\n                        \"name\": \"defense\",\n                        \"qnt\": 65\n                    },\n                    {\n                        \"name\": \"special-attack\",\n                        \"qnt\": 50\n                    },\n                    {\n                        \"name\": \"special-defense\",\n                        \"qnt\": 64\n                    },\n                    {\n                        \"name\": \"speed\",\n                        \"qnt\": 43\n                    }\n                ],\n                \"img_url\": \"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/7.gif\",\n                \"evolutions\": [\n                    {\n                        \"name\": \"squirtle\",\n                        \"position\": 1\n                    },\n                    {\n                        \"name\": \"wartortle\",\n                        \"position\": 2\n                    },\n                    {\n                        \"name\": \"blastoise\",\n                        \"position\": 3\n                    }\n                ]\n            },\n            {\n                \"id\": 8,\n                \"weight\": 225,\n                \"base_experience\": 142,\n                \"height\": 10,\n                \"name\": \"wartortle\",\n                \"abilities\": [\n                    \"torrent\",\n                    \"rain-dish\"\n                ],\n                \"types\": [\n                    \"water\"\n                ],\n                \"stats\": [\n                    {\n                        \"name\": \"hp\",\n                        \"qnt\": 59\n                    },\n                    {\n                        \"name\": \"attack\",\n                        \"qnt\": 63\n                    },\n                    {\n                        \"name\": \"defense\",\n                        \"qnt\": 80\n                    },\n                    {\n                        \"name\": \"special-attack\",\n                        \"qnt\": 65\n                    },\n                    {\n                        \"name\": \"special-defense\",\n                        \"qnt\": 80\n                    },\n                    {\n                        \"name\": \"speed\",\n                        \"qnt\": 58\n                    }\n                ],\n                \"img_url\": \"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/8.gif\",\n                \"evolutions\": [\n                    {\n                        \"name\": \"squirtle\",\n                        \"position\": 1\n                    },\n                    {\n                        \"name\": \"wartortle\",\n                        \"position\": 2\n                    },\n                    {\n                        \"name\": \"blastoise\",\n                        \"position\": 3\n                    }\n                ]\n            },\n            {\n                \"id\": 9,\n                \"weight\": 855,\n                \"base_experience\": 265,\n                \"height\": 16,\n                \"name\": \"blastoise\",\n                \"abilities\": [\n                    \"torrent\",\n                    \"rain-dish\"\n                ],\n                \"types\": [\n                    \"water\"\n                ],\n                \"stats\": [\n                    {\n                        \"name\": \"hp\",\n                        \"qnt\": 79\n                    },\n                    {\n                        \"name\": \"attack\",\n                        \"qnt\": 83\n                    },\n                    {\n                        \"name\": \"defense\",\n                        \"qnt\": 100\n                    },\n                    {\n                        \"name\": \"special-attack\",\n                        \"qnt\": 85\n                    },\n                    {\n                        \"name\": \"special-defense\",\n                        \"qnt\": 105\n                    },\n                    {\n                        \"name\": \"speed\",\n                        \"qnt\": 78\n                    }\n                ],\n                \"img_url\": \"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/9.gif\",\n                \"evolutions\": [\n                    {\n                        \"name\": \"squirtle\",\n                        \"position\": 1\n                    },\n                    {\n                        \"name\": \"wartortle\",\n                        \"position\": 2\n                    },\n                    {\n                        \"name\": \"blastoise\",\n                        \"position\": 3\n                    }\n                ]\n            },\n            {\n                \"id\": 10,\n                \"weight\": 29,\n                \"base_experience\": 39,\n                \"height\": 3,\n                \"name\": \"caterpie\",\n                \"abilities\": [\n                    \"shield-dust\",\n                    \"run-away\"\n                ],\n                \"types\": [\n                    \"bug\"\n                ],\n                \"stats\": [\n                    {\n                        \"name\": \"hp\",\n                        \"qnt\": 45\n                    },\n                    {\n                        \"name\": \"attack\",\n                        \"qnt\": 30\n                    },\n                    {\n                        \"name\": \"defense\",\n                        \"qnt\": 35\n                    },\n                    {\n                        \"name\": \"special-attack\",\n                        \"qnt\": 20\n                    },\n                    {\n                        \"name\": \"special-defense\",\n                        \"qnt\": 20\n                    },\n                    {\n                        \"name\": \"speed\",\n                        \"qnt\": 45\n                    }\n                ],\n                \"img_url\": \"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/10.gif\",\n                \"evolutions\": [\n                    {\n                        \"name\": \"caterpie\",\n                        \"position\": 1\n                    },\n                    {\n                        \"name\": \"metapod\",\n                        \"position\": 2\n                    },\n                    {\n                        \"name\": \"butterfree\",\n                        \"position\": 3\n                    }\n                ]\n            },\n            {\n                \"id\": 11,\n                \"weight\": 99,\n                \"base_experience\": 72,\n                \"height\": 7,\n                \"name\": \"metapod\",\n                \"abilities\": [\n                    \"shed-skin\"\n                ],\n                \"types\": [\n                    \"bug\"\n                ],\n                \"stats\": [\n                    {\n                        \"name\": \"hp\",\n                        \"qnt\": 50\n                    },\n                    {\n                        \"name\": \"attack\",\n                        \"qnt\": 20\n                    },\n                    {\n                        \"name\": \"defense\",\n                        \"qnt\": 55\n                    },\n                    {\n                        \"name\": \"special-attack\",\n                        \"qnt\": 25\n                    },\n                    {\n                        \"name\": \"special-defense\",\n                        \"qnt\": 25\n                    },\n                    {\n                        \"name\": \"speed\",\n                        \"qnt\": 30\n                    }\n                ],\n                \"img_url\": \"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/11.gif\",\n                \"evolutions\": [\n                    {\n                        \"name\": \"caterpie\",\n                        \"position\": 1\n                    },\n                    {\n                        \"name\": \"metapod\",\n                        \"position\": 2\n                    },\n                    {\n                        \"name\": \"butterfree\",\n                        \"position\": 3\n                    }\n                ]\n            },\n            {\n                \"id\": 12,\n                \"weight\": 320,\n                \"base_experience\": 198,\n                \"height\": 11,\n                \"name\": \"butterfree\",\n                \"abilities\": [\n                    \"compound-eyes\",\n                    \"tinted-lens\"\n                ],\n                \"types\": [\n                    \"bug\",\n                    \"flying\"\n                ],\n                \"stats\": [\n                    {\n                        \"name\": \"hp\",\n                        \"qnt\": 60\n                    },\n                    {\n                        \"name\": \"attack\",\n                        \"qnt\": 45\n                    },\n                    {\n                        \"name\": \"defense\",\n                        \"qnt\": 50\n                    },\n                    {\n                        \"name\": \"special-attack\",\n                        \"qnt\": 90\n                    },\n                    {\n                        \"name\": \"special-defense\",\n                        \"qnt\": 80\n                    },\n                    {\n                        \"name\": \"speed\",\n                        \"qnt\": 70\n                    }\n                ],\n                \"img_url\": \"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/12.gif\",\n                \"evolutions\": [\n                    {\n                        \"name\": \"caterpie\",\n                        \"position\": 1\n                    },\n                    {\n                        \"name\": \"metapod\",\n                        \"position\": 2\n                    },\n                    {\n                        \"name\": \"butterfree\",\n                        \"position\": 3\n                    }\n                ]\n            },\n            {\n                \"id\": 13,\n                \"weight\": 32,\n                \"base_experience\": 39,\n                \"height\": 3,\n                \"name\": \"weedle\",\n                \"abilities\": [\n                    \"shield-dust\",\n                    \"run-away\"\n                ],\n                \"types\": [\n                    \"bug\",\n                    \"poison\"\n                ],\n                \"stats\": [\n                    {\n                        \"name\": \"hp\",\n                        \"qnt\": 40\n                    },\n                    {\n                        \"name\": \"attack\",\n                        \"qnt\": 35\n                    },\n                    {\n                        \"name\": \"defense\",\n                        \"qnt\": 30\n                    },\n                    {\n                        \"name\": \"special-attack\",\n                        \"qnt\": 20\n                    },\n                    {\n                        \"name\": \"special-defense\",\n                        \"qnt\": 20\n                    },\n                    {\n                        \"name\": \"speed\",\n                        \"qnt\": 50\n                    }\n                ],\n                \"img_url\": \"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/13.gif\",\n                \"evolutions\": [\n                    {\n                        \"name\": \"weedle\",\n                        \"position\": 1\n                    },\n                    {\n                        \"name\": \"kakuna\",\n                        \"position\": 2\n                    },\n                    {\n                        \"name\": \"beedrill\",\n                        \"position\": 3\n                    }\n                ]\n            },\n            {\n                \"id\": 14,\n                \"weight\": 100,\n                \"base_experience\": 72,\n                \"height\": 6,\n                \"name\": \"kakuna\",\n                \"abilities\": [\n                    \"shed-skin\"\n                ],\n                \"types\": [\n                    \"bug\",\n                    \"poison\"\n                ],\n                \"stats\": [\n                    {\n                        \"name\": \"hp\",\n                        \"qnt\": 45\n                    },\n                    {\n                        \"name\": \"attack\",\n                        \"qnt\": 25\n                    },\n                    {\n                        \"name\": \"defense\",\n                        \"qnt\": 50\n                    },\n                    {\n                        \"name\": \"special-attack\",\n                        \"qnt\": 25\n                    },\n                    {\n                        \"name\": \"special-defense\",\n                        \"qnt\": 25\n                    },\n                    {\n                        \"name\": \"speed\",\n                        \"qnt\": 35\n                    }\n                ],\n                \"img_url\": \"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/14.gif\",\n                \"evolutions\": [\n                    {\n                        \"name\": \"weedle\",\n                        \"position\": 1\n                    },\n                    {\n                        \"name\": \"kakuna\",\n                        \"position\": 2\n                    },\n                    {\n                        \"name\": \"beedrill\",\n                        \"position\": 3\n                    }\n                ]\n            },\n            {\n                \"id\": 15,\n                \"weight\": 295,\n                \"base_experience\": 178,\n                \"height\": 10,\n                \"name\": \"beedrill\",\n                \"abilities\": [\n                    \"swarm\",\n                    \"sniper\"\n                ],\n                \"types\": [\n                    \"bug\",\n                    \"poison\"\n                ],\n                \"stats\": [\n                    {\n                        \"name\": \"hp\",\n                        \"qnt\": 65\n                    },\n                    {\n                        \"name\": \"attack\",\n                        \"qnt\": 90\n                    },\n                    {\n                        \"name\": \"defense\",\n                        \"qnt\": 40\n                    },\n                    {\n                        \"name\": \"special-attack\",\n                        \"qnt\": 45\n                    },\n                    {\n                        \"name\": \"special-defense\",\n                        \"qnt\": 80\n                    },\n                    {\n                        \"name\": \"speed\",\n                        \"qnt\": 75\n                    }\n                ],\n                \"img_url\": \"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/15.gif\",\n                \"evolutions\": [\n                    {\n                        \"name\": \"weedle\",\n                        \"position\": 1\n                    },\n                    {\n                        \"name\": \"kakuna\",\n                        \"position\": 2\n                    },\n                    {\n                        \"name\": \"beedrill\",\n                        \"position\": 3\n                    }\n                ]\n            },\n            {\n                \"id\": 16,\n                \"weight\": 18,\n                \"base_experience\": 50,\n                \"height\": 3,\n                \"name\": \"pidgey\",\n                \"abilities\": [\n                    \"keen-eye\",\n                    \"tangled-feet\",\n                    \"big-pecks\"\n                ],\n                \"types\": [\n                    \"normal\",\n                    \"flying\"\n                ],\n                \"stats\": [\n                    {\n                        \"name\": \"hp\",\n                        \"qnt\": 40\n                    },\n                    {\n                        \"name\": \"attack\",\n                        \"qnt\": 45\n                    },\n                    {\n                        \"name\": \"defense\",\n                        \"qnt\": 40\n                    },\n                    {\n                        \"name\": \"special-attack\",\n                        \"qnt\": 35\n                    },\n                    {\n                        \"name\": \"special-defense\",\n                        \"qnt\": 35\n                    },\n                    {\n                        \"name\": \"speed\",\n                        \"qnt\": 56\n                    }\n                ],\n                \"img_url\": \"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/16.gif\",\n                \"evolutions\": [\n                    {\n                        \"name\": \"pidgey\",\n                        \"position\": 1\n                    },\n                    {\n                        \"name\": \"pidgeotto\",\n                        \"position\": 2\n                    },\n                    {\n                        \"name\": \"pidgeot\",\n                        \"position\": 3\n                    }\n                ]\n            },\n            {\n                \"id\": 17,\n                \"weight\": 300,\n                \"base_experience\": 122,\n                \"height\": 11,\n                \"name\": \"pidgeotto\",\n                \"abilities\": [\n                    \"keen-eye\",\n                    \"tangled-feet\",\n                    \"big-pecks\"\n                ],\n                \"types\": [\n                    \"normal\",\n                    \"flying\"\n                ],\n                \"stats\": [\n                    {\n                        \"name\": \"hp\",\n                        \"qnt\": 63\n                    },\n                    {\n                        \"name\": \"attack\",\n                        \"qnt\": 60\n                    },\n                    {\n                        \"name\": \"defense\",\n                        \"qnt\": 55\n                    },\n                    {\n                        \"name\": \"special-attack\",\n                        \"qnt\": 50\n                    },\n                    {\n                        \"name\": \"special-defense\",\n                        \"qnt\": 50\n                    },\n                    {\n                        \"name\": \"speed\",\n                        \"qnt\": 71\n                    }\n                ],\n                \"img_url\": \"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/17.gif\",\n                \"evolutions\": [\n                    {\n                        \"name\": \"pidgey\",\n                        \"position\": 1\n                    },\n                    {\n                        \"name\": \"pidgeotto\",\n                        \"position\": 2\n                    },\n                    {\n                        \"name\": \"pidgeot\",\n                        \"position\": 3\n                    }\n                ]\n            },\n            {\n                \"id\": 18,\n                \"weight\": 395,\n                \"base_experience\": 216,\n                \"height\": 15,\n                \"name\": \"pidgeot\",\n                \"abilities\": [\n                    \"keen-eye\",\n                    \"tangled-feet\",\n                    \"big-pecks\"\n                ],\n                \"types\": [\n                    \"normal\",\n                    \"flying\"\n                ],\n                \"stats\": [\n                    {\n                        \"name\": \"hp\",\n                        \"qnt\": 83\n                    },\n                    {\n                        \"name\": \"attack\",\n                        \"qnt\": 80\n                    },\n                    {\n                        \"name\": \"defense\",\n                        \"qnt\": 75\n                    },\n                    {\n                        \"name\": \"special-attack\",\n                        \"qnt\": 70\n                    },\n                    {\n                        \"name\": \"special-defense\",\n                        \"qnt\": 70\n                    },\n                    {\n                        \"name\": \"speed\",\n                        \"qnt\": 101\n                    }\n                ],\n                \"img_url\": \"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/18.gif\",\n                \"evolutions\": [\n                    {\n                        \"name\": \"pidgey\",\n                        \"position\": 1\n                    },\n                    {\n                        \"name\": \"pidgeotto\",\n                        \"position\": 2\n                    },\n                    {\n                        \"name\": \"pidgeot\",\n                        \"position\": 3\n                    }\n                ]\n            },\n            {\n                \"id\": 19,\n                \"weight\": 35,\n                \"base_experience\": 51,\n                \"height\": 3,\n                \"name\": \"rattata\",\n                \"abilities\": [\n                    \"run-away\",\n                    \"guts\",\n                    \"hustle\"\n                ],\n                \"types\": [\n                    \"normal\"\n                ],\n                \"stats\": [\n                    {\n                        \"name\": \"hp\",\n                        \"qnt\": 30\n                    },\n                    {\n                        \"name\": \"attack\",\n                        \"qnt\": 56\n                    },\n                    {\n                        \"name\": \"defense\",\n                        \"qnt\": 35\n                    },\n                    {\n                        \"name\": \"special-attack\",\n                        \"qnt\": 25\n                    },\n                    {\n                        \"name\": \"special-defense\",\n                        \"qnt\": 35\n                    },\n                    {\n                        \"name\": \"speed\",\n                        \"qnt\": 72\n                    }\n                ],\n                \"img_url\": \"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/19.gif\",\n                \"evolutions\": [\n                    {\n                        \"name\": \"rattata\",\n                        \"position\": 1\n                    },\n                    {\n                        \"name\": \"raticate\",\n                        \"position\": 2\n                    }\n                ]\n            },\n            {\n                \"id\": 20,\n                \"weight\": 185,\n                \"base_experience\": 145,\n                \"height\": 7,\n                \"name\": \"raticate\",\n                \"abilities\": [\n                    \"run-away\",\n                    \"guts\",\n                    \"hustle\"\n                ],\n                \"types\": [\n                    \"normal\"\n                ],\n                \"stats\": [\n                    {\n                        \"name\": \"hp\",\n                        \"qnt\": 55\n                    },\n                    {\n                        \"name\": \"attack\",\n                        \"qnt\": 81\n                    },\n                    {\n                        \"name\": \"defense\",\n                        \"qnt\": 60\n                    },\n                    {\n                        \"name\": \"special-attack\",\n                        \"qnt\": 50\n                    },\n                    {\n                        \"name\": \"special-defense\",\n                        \"qnt\": 70\n                    },\n                    {\n                        \"name\": \"speed\",\n                        \"qnt\": 97\n                    }\n                ],\n                \"img_url\": \"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/20.gif\",\n                \"evolutions\": [\n                    {\n                        \"name\": \"rattata\",\n                        \"position\": 1\n                    },\n                    {\n                        \"name\": \"raticate\",\n                        \"position\": 2\n                    }\n                ]\n            },\n            {\n                \"id\": 21,\n                \"weight\": 20,\n                \"base_experience\": 52,\n                \"height\": 3,\n                \"name\": \"spearow\",\n                \"abilities\": [\n                    \"keen-eye\",\n                    \"sniper\"\n                ],\n                \"types\": [\n                    \"normal\",\n                    \"flying\"\n                ],\n                \"stats\": [\n                    {\n                        \"name\": \"hp\",\n                        \"qnt\": 40\n                    },\n                    {\n                        \"name\": \"attack\",\n                        \"qnt\": 60\n                    },\n                    {\n                        \"name\": \"defense\",\n                        \"qnt\": 30\n                    },\n                    {\n                        \"name\": \"special-attack\",\n                        \"qnt\": 31\n                    },\n                    {\n                        \"name\": \"special-defense\",\n                        \"qnt\": 31\n                    },\n                    {\n                        \"name\": \"speed\",\n                        \"qnt\": 70\n                    }\n                ],\n                \"img_url\": \"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/21.gif\",\n                \"evolutions\": [\n                    {\n                        \"name\": \"spearow\",\n                        \"position\": 1\n                    },\n                    {\n                        \"name\": \"fearow\",\n                        \"position\": 2\n                    }\n                ]\n            }\n        ],\n        \"pagination\": {\n            \"limit\": 20,\n            \"offset\": 1,\n            \"total\": 1302\n        }\n    },\n    \"statusHTTP\": 200,\n    \"message\": \"Lista de pokemons\",\n    \"developerMessage\": \"List pokemons\"\n}"
+						},
+						{
+							"name": "200 - No More",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/pokemons?limit=20&offset=1302",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"pokemons"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "20"
+										},
+										{
+											"key": "offset",
+											"value": "1302"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "156"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"9c-CDvS9DFk4/jfuTpjfXaaWbouO0o\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 01 Jan 2024 22:22:40 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"pokemons\": [],\n        \"pagination\": {\n            \"limit\": 20,\n            \"offset\": 1302,\n            \"total\": 0\n        }\n    },\n    \"statusHTTP\": 200,\n    \"message\": \"Lista de pokemons\",\n    \"developerMessage\": \"List pokemons\"\n}"
+						},
+						{
+							"name": "400",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/pokemons?limit=0&offset=0",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"pokemons"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "0"
+										},
+										{
+											"key": "offset",
+											"value": "0"
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "185"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"b9-lRWzKd+l+sBYXgSkaOOk8JK2Wgo\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 31 Dec 2023 15:12:21 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": null,\n    \"statusHTTP\": 400,\n    \"message\": \"Parâmetro Limit deve ser um número válido maior que zero.\",\n    \"developerMessage\": \"Parâmetro Limit deve ser um número válido maior que zero.\"\n}"
+						},
+						{
+							"name": "400 - Limit",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/pokemons?offset=1",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"pokemons"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "20",
+											"disabled": true
+										},
+										{
+											"key": "offset",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "109"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"6d-mwQwwqoeYmRXMtOmbAJ+AL2cjOQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 29 Dec 2023 23:13:31 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": null,\n    \"statusHTTP\": 400,\n    \"message\": \"Limit é obrigatório.\",\n    \"developerMessage\": \"Limit é obrigatório.\"\n}"
+						},
+						{
+							"name": "400 - Offset",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/pokemons?limit=20",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"pokemons"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "20"
+										},
+										{
+											"key": "offset",
+											"value": "1",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "111"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"6f-SGmqNr1GIoviYPbPg0bhFsGfp3o\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 29 Dec 2023 23:13:46 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": null,\n    \"statusHTTP\": 400,\n    \"message\": \"offset é obrigatório.\",\n    \"developerMessage\": \"offset é obrigatório.\"\n}"
+						},
+						{
+							"name": "401",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/pokemons?limit=20&offset=1",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"pokemons"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "20"
+										},
+										{
+											"key": "offset",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "125"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"7d-qZxr5JKqbsZAjDWi5loAtUOetg4\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 29 Dec 2023 23:23:39 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": null,\n    \"statusHTTP\": 401,\n    \"message\": \"Token de acesso não informado\",\n    \"developerMessage\": \"Token de acesso não informado\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Find",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/pokemons/find/pikachu",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"pokemons",
+								"find",
+								"pikachu"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/pokemons/find/pikachu",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"pokemons",
+										"find",
+										"pikachu"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "653"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"28d-evDDWBXWZBKh5uoYz54Ilw8DOtA\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 29 Dec 2023 23:14:49 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"id\": 25,\n        \"weight\": 60,\n        \"base_experience\": 112,\n        \"height\": 4,\n        \"name\": \"pikachu\",\n        \"abilities\": [\n            \"static\",\n            \"lightning-rod\"\n        ],\n        \"types\": [\n            \"electric\"\n        ],\n        \"stats\": [\n            {\n                \"name\": \"hp\",\n                \"qnt\": 35\n            },\n            {\n                \"name\": \"attack\",\n                \"qnt\": 55\n            },\n            {\n                \"name\": \"defense\",\n                \"qnt\": 40\n            },\n            {\n                \"name\": \"special-attack\",\n                \"qnt\": 50\n            },\n            {\n                \"name\": \"special-defense\",\n                \"qnt\": 50\n            },\n            {\n                \"name\": \"speed\",\n                \"qnt\": 90\n            }\n        ],\n        \"evolutions\": [\n            {\n                \"name\": \"pichu\",\n                \"position\": 1\n            },\n            {\n                \"name\": \"pikachu\",\n                \"position\": 2\n            },\n            {\n                \"name\": \"raichu\",\n                \"position\": 3\n            }\n        ],\n        \"img_url\": \"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/25.gif\"\n    },\n    \"statusHTTP\": 200,\n    \"message\": \"Pokemon encontrado\",\n    \"developerMessage\": \"Pokemon founded\"\n}"
+						},
+						{
+							"name": "400 - Not founded",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/pokemons/find/teste",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"pokemons",
+										"find",
+										"teste"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "113"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"71-NlnYZIU1bF3yP7bMKfbtRqvW54A\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 29 Dec 2023 23:15:03 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": null,\n    \"statusHTTP\": 400,\n    \"message\": \"Pokemon não encontrado!\",\n    \"developerMessage\": \"Pokemon não encontrado!\"\n}"
+						},
+						{
+							"name": "401",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/pokemons/find/pikachu",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"pokemons",
+										"find",
+										"pikachu"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "125"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"7d-qZxr5JKqbsZAjDWi5loAtUOetg4\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 29 Dec 2023 23:24:01 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": null,\n    \"statusHTTP\": 401,\n    \"message\": \"Token de acesso não informado\",\n    \"developerMessage\": \"Token de acesso não informado\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get by Type",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/pokemons/type/grass?limit=21&offset=0",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"pokemons",
+								"type",
+								"grass"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "21"
+								},
+								{
+									"key": "offset",
+									"value": "0"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/pokemons/grass/type?limit=10&offset=0",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"pokemons",
+										"grass",
+										"type"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "10"
+										},
+										{
+											"key": "offset",
+											"value": "0"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "5933"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"172d-hLDmupNas1f87/y9RUdBKTNTKLo\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 31 Dec 2023 14:58:50 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"pokemons\": [\n            {\n                \"id\": 1,\n                \"weight\": 69,\n                \"base_experience\": 64,\n                \"height\": 7,\n                \"name\": \"bulbasaur\",\n                \"abilities\": [\n                    \"overgrow\",\n                    \"chlorophyll\"\n                ],\n                \"types\": [\n                    \"grass\",\n                    \"poison\"\n                ],\n                \"stats\": [\n                    {\n                        \"name\": \"hp\",\n                        \"qnt\": 45\n                    },\n                    {\n                        \"name\": \"attack\",\n                        \"qnt\": 49\n                    },\n                    {\n                        \"name\": \"defense\",\n                        \"qnt\": 49\n                    },\n                    {\n                        \"name\": \"special-attack\",\n                        \"qnt\": 65\n                    },\n                    {\n                        \"name\": \"special-defense\",\n                        \"qnt\": 65\n                    },\n                    {\n                        \"name\": \"speed\",\n                        \"qnt\": 45\n                    }\n                ],\n                \"img_url\": \"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/1.gif\",\n                \"evolutions\": [\n                    {\n                        \"name\": \"bulbasaur\",\n                        \"position\": 1\n                    },\n                    {\n                        \"name\": \"ivysaur\",\n                        \"position\": 2\n                    },\n                    {\n                        \"name\": \"venusaur\",\n                        \"position\": 3\n                    }\n                ]\n            },\n            {\n                \"id\": 2,\n                \"weight\": 130,\n                \"base_experience\": 142,\n                \"height\": 10,\n                \"name\": \"ivysaur\",\n                \"abilities\": [\n                    \"overgrow\",\n                    \"chlorophyll\"\n                ],\n                \"types\": [\n                    \"grass\",\n                    \"poison\"\n                ],\n                \"stats\": [\n                    {\n                        \"name\": \"hp\",\n                        \"qnt\": 60\n                    },\n                    {\n                        \"name\": \"attack\",\n                        \"qnt\": 62\n                    },\n                    {\n                        \"name\": \"defense\",\n                        \"qnt\": 63\n                    },\n                    {\n                        \"name\": \"special-attack\",\n                        \"qnt\": 80\n                    },\n                    {\n                        \"name\": \"special-defense\",\n                        \"qnt\": 80\n                    },\n                    {\n                        \"name\": \"speed\",\n                        \"qnt\": 60\n                    }\n                ],\n                \"img_url\": \"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/2.gif\",\n                \"evolutions\": [\n                    {\n                        \"name\": \"bulbasaur\",\n                        \"position\": 1\n                    },\n                    {\n                        \"name\": \"ivysaur\",\n                        \"position\": 2\n                    },\n                    {\n                        \"name\": \"venusaur\",\n                        \"position\": 3\n                    }\n                ]\n            },\n            {\n                \"id\": 3,\n                \"weight\": 1000,\n                \"base_experience\": 263,\n                \"height\": 20,\n                \"name\": \"venusaur\",\n                \"abilities\": [\n                    \"overgrow\",\n                    \"chlorophyll\"\n                ],\n                \"types\": [\n                    \"grass\",\n                    \"poison\"\n                ],\n                \"stats\": [\n                    {\n                        \"name\": \"hp\",\n                        \"qnt\": 80\n                    },\n                    {\n                        \"name\": \"attack\",\n                        \"qnt\": 82\n                    },\n                    {\n                        \"name\": \"defense\",\n                        \"qnt\": 83\n                    },\n                    {\n                        \"name\": \"special-attack\",\n                        \"qnt\": 100\n                    },\n                    {\n                        \"name\": \"special-defense\",\n                        \"qnt\": 100\n                    },\n                    {\n                        \"name\": \"speed\",\n                        \"qnt\": 80\n                    }\n                ],\n                \"img_url\": \"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/3.gif\",\n                \"evolutions\": [\n                    {\n                        \"name\": \"bulbasaur\",\n                        \"position\": 1\n                    },\n                    {\n                        \"name\": \"ivysaur\",\n                        \"position\": 2\n                    },\n                    {\n                        \"name\": \"venusaur\",\n                        \"position\": 3\n                    }\n                ]\n            },\n            {\n                \"id\": 43,\n                \"weight\": 54,\n                \"base_experience\": 64,\n                \"height\": 5,\n                \"name\": \"oddish\",\n                \"abilities\": [\n                    \"chlorophyll\",\n                    \"run-away\"\n                ],\n                \"types\": [\n                    \"grass\",\n                    \"poison\"\n                ],\n                \"stats\": [\n                    {\n                        \"name\": \"hp\",\n                        \"qnt\": 45\n                    },\n                    {\n                        \"name\": \"attack\",\n                        \"qnt\": 50\n                    },\n                    {\n                        \"name\": \"defense\",\n                        \"qnt\": 55\n                    },\n                    {\n                        \"name\": \"special-attack\",\n                        \"qnt\": 75\n                    },\n                    {\n                        \"name\": \"special-defense\",\n                        \"qnt\": 65\n                    },\n                    {\n                        \"name\": \"speed\",\n                        \"qnt\": 30\n                    }\n                ],\n                \"img_url\": \"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/43.gif\",\n                \"evolutions\": [\n                    {\n                        \"name\": \"oddish\",\n                        \"position\": 1\n                    },\n                    {\n                        \"name\": \"gloom\",\n                        \"position\": 2\n                    },\n                    {\n                        \"name\": \"vileplume\",\n                        \"position\": 3\n                    },\n                    {\n                        \"name\": \"bellossom\",\n                        \"position\": 3\n                    }\n                ]\n            },\n            {\n                \"id\": 44,\n                \"weight\": 86,\n                \"base_experience\": 138,\n                \"height\": 8,\n                \"name\": \"gloom\",\n                \"abilities\": [\n                    \"chlorophyll\",\n                    \"stench\"\n                ],\n                \"types\": [\n                    \"grass\",\n                    \"poison\"\n                ],\n                \"stats\": [\n                    {\n                        \"name\": \"hp\",\n                        \"qnt\": 60\n                    },\n                    {\n                        \"name\": \"attack\",\n                        \"qnt\": 65\n                    },\n                    {\n                        \"name\": \"defense\",\n                        \"qnt\": 70\n                    },\n                    {\n                        \"name\": \"special-attack\",\n                        \"qnt\": 85\n                    },\n                    {\n                        \"name\": \"special-defense\",\n                        \"qnt\": 75\n                    },\n                    {\n                        \"name\": \"speed\",\n                        \"qnt\": 40\n                    }\n                ],\n                \"img_url\": \"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/44.gif\",\n                \"evolutions\": [\n                    {\n                        \"name\": \"oddish\",\n                        \"position\": 1\n                    },\n                    {\n                        \"name\": \"gloom\",\n                        \"position\": 2\n                    },\n                    {\n                        \"name\": \"vileplume\",\n                        \"position\": 3\n                    },\n                    {\n                        \"name\": \"bellossom\",\n                        \"position\": 3\n                    }\n                ]\n            },\n            {\n                \"id\": 45,\n                \"weight\": 186,\n                \"base_experience\": 245,\n                \"height\": 12,\n                \"name\": \"vileplume\",\n                \"abilities\": [\n                    \"chlorophyll\",\n                    \"effect-spore\"\n                ],\n                \"types\": [\n                    \"grass\",\n                    \"poison\"\n                ],\n                \"stats\": [\n                    {\n                        \"name\": \"hp\",\n                        \"qnt\": 75\n                    },\n                    {\n                        \"name\": \"attack\",\n                        \"qnt\": 80\n                    },\n                    {\n                        \"name\": \"defense\",\n                        \"qnt\": 85\n                    },\n                    {\n                        \"name\": \"special-attack\",\n                        \"qnt\": 110\n                    },\n                    {\n                        \"name\": \"special-defense\",\n                        \"qnt\": 90\n                    },\n                    {\n                        \"name\": \"speed\",\n                        \"qnt\": 50\n                    }\n                ],\n                \"img_url\": \"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/45.gif\",\n                \"evolutions\": [\n                    {\n                        \"name\": \"oddish\",\n                        \"position\": 1\n                    },\n                    {\n                        \"name\": \"gloom\",\n                        \"position\": 2\n                    },\n                    {\n                        \"name\": \"vileplume\",\n                        \"position\": 3\n                    },\n                    {\n                        \"name\": \"bellossom\",\n                        \"position\": 3\n                    }\n                ]\n            },\n            {\n                \"id\": 46,\n                \"weight\": 54,\n                \"base_experience\": 57,\n                \"height\": 3,\n                \"name\": \"paras\",\n                \"abilities\": [\n                    \"effect-spore\",\n                    \"dry-skin\",\n                    \"damp\"\n                ],\n                \"types\": [\n                    \"bug\",\n                    \"grass\"\n                ],\n                \"stats\": [\n                    {\n                        \"name\": \"hp\",\n                        \"qnt\": 35\n                    },\n                    {\n                        \"name\": \"attack\",\n                        \"qnt\": 70\n                    },\n                    {\n                        \"name\": \"defense\",\n                        \"qnt\": 55\n                    },\n                    {\n                        \"name\": \"special-attack\",\n                        \"qnt\": 45\n                    },\n                    {\n                        \"name\": \"special-defense\",\n                        \"qnt\": 55\n                    },\n                    {\n                        \"name\": \"speed\",\n                        \"qnt\": 25\n                    }\n                ],\n                \"img_url\": \"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/46.gif\",\n                \"evolutions\": [\n                    {\n                        \"name\": \"paras\",\n                        \"position\": 1\n                    },\n                    {\n                        \"name\": \"parasect\",\n                        \"position\": 2\n                    }\n                ]\n            },\n            {\n                \"id\": 47,\n                \"weight\": 295,\n                \"base_experience\": 142,\n                \"height\": 10,\n                \"name\": \"parasect\",\n                \"abilities\": [\n                    \"effect-spore\",\n                    \"dry-skin\",\n                    \"damp\"\n                ],\n                \"types\": [\n                    \"bug\",\n                    \"grass\"\n                ],\n                \"stats\": [\n                    {\n                        \"name\": \"hp\",\n                        \"qnt\": 60\n                    },\n                    {\n                        \"name\": \"attack\",\n                        \"qnt\": 95\n                    },\n                    {\n                        \"name\": \"defense\",\n                        \"qnt\": 80\n                    },\n                    {\n                        \"name\": \"special-attack\",\n                        \"qnt\": 60\n                    },\n                    {\n                        \"name\": \"special-defense\",\n                        \"qnt\": 80\n                    },\n                    {\n                        \"name\": \"speed\",\n                        \"qnt\": 30\n                    }\n                ],\n                \"img_url\": \"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/47.gif\",\n                \"evolutions\": [\n                    {\n                        \"name\": \"paras\",\n                        \"position\": 1\n                    },\n                    {\n                        \"name\": \"parasect\",\n                        \"position\": 2\n                    }\n                ]\n            },\n            {\n                \"id\": 69,\n                \"weight\": 40,\n                \"base_experience\": 60,\n                \"height\": 7,\n                \"name\": \"bellsprout\",\n                \"abilities\": [\n                    \"chlorophyll\",\n                    \"gluttony\"\n                ],\n                \"types\": [\n                    \"grass\",\n                    \"poison\"\n                ],\n                \"stats\": [\n                    {\n                        \"name\": \"hp\",\n                        \"qnt\": 50\n                    },\n                    {\n                        \"name\": \"attack\",\n                        \"qnt\": 75\n                    },\n                    {\n                        \"name\": \"defense\",\n                        \"qnt\": 35\n                    },\n                    {\n                        \"name\": \"special-attack\",\n                        \"qnt\": 70\n                    },\n                    {\n                        \"name\": \"special-defense\",\n                        \"qnt\": 30\n                    },\n                    {\n                        \"name\": \"speed\",\n                        \"qnt\": 40\n                    }\n                ],\n                \"img_url\": \"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/69.gif\",\n                \"evolutions\": [\n                    {\n                        \"name\": \"bellsprout\",\n                        \"position\": 1\n                    },\n                    {\n                        \"name\": \"weepinbell\",\n                        \"position\": 2\n                    },\n                    {\n                        \"name\": \"victreebel\",\n                        \"position\": 3\n                    }\n                ]\n            },\n            {\n                \"id\": 70,\n                \"weight\": 64,\n                \"base_experience\": 137,\n                \"height\": 10,\n                \"name\": \"weepinbell\",\n                \"abilities\": [\n                    \"chlorophyll\",\n                    \"gluttony\"\n                ],\n                \"types\": [\n                    \"grass\",\n                    \"poison\"\n                ],\n                \"stats\": [\n                    {\n                        \"name\": \"hp\",\n                        \"qnt\": 65\n                    },\n                    {\n                        \"name\": \"attack\",\n                        \"qnt\": 90\n                    },\n                    {\n                        \"name\": \"defense\",\n                        \"qnt\": 50\n                    },\n                    {\n                        \"name\": \"special-attack\",\n                        \"qnt\": 85\n                    },\n                    {\n                        \"name\": \"special-defense\",\n                        \"qnt\": 45\n                    },\n                    {\n                        \"name\": \"speed\",\n                        \"qnt\": 55\n                    }\n                ],\n                \"img_url\": \"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/70.gif\",\n                \"evolutions\": [\n                    {\n                        \"name\": \"bellsprout\",\n                        \"position\": 1\n                    },\n                    {\n                        \"name\": \"weepinbell\",\n                        \"position\": 2\n                    },\n                    {\n                        \"name\": \"victreebel\",\n                        \"position\": 3\n                    }\n                ]\n            }\n        ],\n        \"pagination\": {\n            \"limit\": 10,\n            \"offset\": 0,\n            \"total\": 152\n        }\n    },\n    \"statusHTTP\": 200,\n    \"message\": \"Pokemons encontrados\",\n    \"developerMessage\": \"Pokemons foundeds\"\n}"
+						},
+						{
+							"name": "200 - No More pokemons",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/pokemons/grass/type?limit=10&offset=152",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"pokemons",
+										"grass",
+										"type"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "10"
+										},
+										{
+											"key": "offset",
+											"value": "152"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "164"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"a4-ETvOTIiVyzrVDp+917dElq1ohK0\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 31 Dec 2023 15:00:41 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"pokemons\": [],\n        \"pagination\": {\n            \"limit\": 10,\n            \"offset\": 152,\n            \"total\": 152\n        }\n    },\n    \"statusHTTP\": 200,\n    \"message\": \"Pokemons encontrados\",\n    \"developerMessage\": \"Pokemons foundeds\"\n}"
+						},
+						{
+							"name": "400",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/pokemons/grass/type?limit=0&offset=0",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"pokemons",
+										"grass",
+										"type"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "0"
+										},
+										{
+											"key": "offset",
+											"value": "0"
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "185"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"b9-lRWzKd+l+sBYXgSkaOOk8JK2Wgo\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 31 Dec 2023 15:11:13 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": null,\n    \"statusHTTP\": 400,\n    \"message\": \"Parâmetro Limit deve ser um número válido maior que zero.\",\n    \"developerMessage\": \"Parâmetro Limit deve ser um número válido maior que zero.\"\n}"
+						},
+						{
+							"name": "400 - Limit",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/pokemons/grass/type?offset=0",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"pokemons",
+										"grass",
+										"type"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "0",
+											"disabled": true
+										},
+										{
+											"key": "offset",
+											"value": "0"
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "131"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"83-QywyU0rCPSz3EkpCc8hiZaOZPrI\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 31 Dec 2023 15:12:47 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": null,\n    \"statusHTTP\": 400,\n    \"message\": \"Parâmetro Limit é obrigatório.\",\n    \"developerMessage\": \"Parâmetro Limit é obrigatório.\"\n}"
+						},
+						{
+							"name": "400 - Limit",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/pokemons/type/grass?limit=0&offset=0",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"pokemons",
+										"type",
+										"grass"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "0"
+										},
+										{
+											"key": "offset",
+											"value": "0"
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "185"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"b9-lRWzKd+l+sBYXgSkaOOk8JK2Wgo\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 01 Jan 2024 22:26:10 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": null,\n    \"statusHTTP\": 400,\n    \"message\": \"Parâmetro Limit deve ser um número válido maior que zero.\",\n    \"developerMessage\": \"Parâmetro Limit deve ser um número válido maior que zero.\"\n}"
+						},
+						{
+							"name": "400 - Offset",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/pokemons/grass/type?limit=1",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"pokemons",
+										"grass",
+										"type"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "1"
+										},
+										{
+											"key": "offset",
+											"value": "0",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "133"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"85-ZWoxo24cVTpOiA27thmQwtnAHWo\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 31 Dec 2023 15:13:19 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": null,\n    \"statusHTTP\": 400,\n    \"message\": \"Parâmetro offset é obrigatório.\",\n    \"developerMessage\": \"Parâmetro offset é obrigatório.\"\n}"
+						},
+						{
+							"name": "401",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/pokemons/grass/type",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"pokemons",
+										"grass",
+										"type"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "125"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"7d-qZxr5JKqbsZAjDWi5loAtUOetg4\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 29 Dec 2023 23:24:32 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": null,\n    \"statusHTTP\": 401,\n    \"message\": \"Token de acesso não informado\",\n    \"developerMessage\": \"Token de acesso não informado\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Types",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/pokemons/types",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"pokemons",
+								"types"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/pokemons/types",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"pokemons",
+										"types"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "456"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1c8-Wve7/tsWKyoIMfeFnxv0NiILETo\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 30 Dec 2023 00:27:07 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": [\n        {\n            \"name\": \"normal\"\n        },\n        {\n            \"name\": \"fighting\"\n        },\n        {\n            \"name\": \"flying\"\n        },\n        {\n            \"name\": \"poison\"\n        },\n        {\n            \"name\": \"ground\"\n        },\n        {\n            \"name\": \"rock\"\n        },\n        {\n            \"name\": \"bug\"\n        },\n        {\n            \"name\": \"ghost\"\n        },\n        {\n            \"name\": \"steel\"\n        },\n        {\n            \"name\": \"fire\"\n        },\n        {\n            \"name\": \"water\"\n        },\n        {\n            \"name\": \"grass\"\n        },\n        {\n            \"name\": \"electric\"\n        },\n        {\n            \"name\": \"psychic\"\n        },\n        {\n            \"name\": \"ice\"\n        },\n        {\n            \"name\": \"dragon\"\n        },\n        {\n            \"name\": \"dark\"\n        },\n        {\n            \"name\": \"fairy\"\n        },\n        {\n            \"name\": \"unknown\"\n        },\n        {\n            \"name\": \"shadow\"\n        }\n    ],\n    \"statusHTTP\": 200,\n    \"message\": \"Lista de tipos de pokemons\",\n    \"developerMessage\": \"List pokemons types\"\n}"
+						},
+						{
+							"name": "401",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/pokemons/types",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"pokemons",
+										"types"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "125"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"7d-qZxr5JKqbsZAjDWi5loAtUOetg4\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 30 Dec 2023 00:27:30 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": null,\n    \"statusHTTP\": 401,\n    \"message\": \"Token de acesso não informado\",\n    \"developerMessage\": \"Token de acesso não informado\"\n}"
+						}
+					]
+				}
+			]
+		}
+	]
+}
