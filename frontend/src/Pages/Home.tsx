@@ -1,8 +1,9 @@
 import { useContext, useEffect } from "react";
-import { Pagination } from "../Components/Pagination";
 import { ListPokemons } from "../Components/Pokemons/ListPokemons";
 import { Search } from "../Components/Search";
 import { PokemonsContext } from "../Contex/PokemonsContext";
+import { ButtonsPagination } from "../Components/ButtonsPagination";
+import { ButtonToTop } from "../Components/ButtonToTop";
 
 export function Home() {
   const { GetTypesPokemons, GetPokemons, setSearch, setTypeSelected } =
@@ -18,8 +19,9 @@ export function Home() {
   return (
     <>
       <Search />
-      <Pagination />
+      <ButtonsPagination />
       <ListPokemons />
+      <ButtonToTop />
     </>
   );
 }

@@ -11,7 +11,7 @@ export function SpecificationsPokemon({ pokemon }: SpecificationsPokemonProps) {
     : "text-black";
 
   return (
-    <div className="flex flex-col p-10 gap-3 flex-1 xs-tablet:p-5">
+    <div className="flex flex-col px-10 gap-3 flex-1 w-full justify-center items-center tablet:px-5 mobile:px-5 tablet:pt-5 mobile:pt-5">
       <div className="flex items-start tablet:justify-center gap-10">
         <div>
           <h2 className="font-medium text-xs text-gray-500">Evoluções:</h2>
@@ -41,7 +41,7 @@ export function SpecificationsPokemon({ pokemon }: SpecificationsPokemonProps) {
       </div>
       <div className="flex flex-col gap-3">
         <h2 className="font-medium text-xs text-gray-500">Status:</h2>
-        <div className="grid grid-cols-3 gap-5 self-start xs-tablet:grid-cols-2 xs-tablet:gap-1">
+        <div className="grid grid-cols-3 gap-5 self-start xs-tablet:grid-cols-2 lg-tablet:grid-cols-2 xs-tablet:gap-1">
           {pokemon?.stats.map((stat) => {
             return (
               <span

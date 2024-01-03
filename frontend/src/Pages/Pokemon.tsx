@@ -15,7 +15,7 @@ export function Pokemon() {
   }, []);
 
   return (
-    <section className="flex tablet:flex-col divide-x-2 tablet:divide-none mobile:divide-none justify-center items-center gap-10 min-h-[77vh] xs-tablet:gap-5">
+    <section className="flex tablet:flex-col divide-x-2 tablet:divide-x-0 mobile:divide-x-0 justify-center items-center gap-10 min-h-[77vh] tablet:gap-0 mobile:gap-0 tablet:divide-y-2 mobile:divide-y-2 px-5 pb-10">
       {specificPokemon && <DatasPokemon pokemon={specificPokemon} />}
       {specificPokemon && <SpecificationsPokemon pokemon={specificPokemon} />}
     </section>

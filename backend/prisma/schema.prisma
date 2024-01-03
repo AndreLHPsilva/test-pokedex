@@ -17,7 +17,7 @@ model User {
 
   team Team?
 
-  @@map("user")
+  @@map("users")
 }
 
 model Team {
@@ -30,7 +30,7 @@ model Team {
   user            User              @relation(fields: [user_id], references: [id])
   user_id         String            @unique
 
-  @@map("team")
+  @@map("teams")
 }
 
 model Pokemon {
@@ -41,7 +41,7 @@ model Pokemon {
   updated_at      DateTime          @updatedAt()
   TeamsOnPokemons TeamsOnPokemons[]
 
-  @@map("pokemon")
+  @@map("pokemons")
 }
 
 model TeamsOnPokemons {
@@ -52,4 +52,6 @@ model TeamsOnPokemons {
   pokemon_id String
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt()
+
+  @@map("teams_on_pokemons")
 }

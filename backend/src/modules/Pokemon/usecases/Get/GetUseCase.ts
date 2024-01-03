@@ -1,5 +1,4 @@
 import { inject, injectable } from "tsyringe";
-import { IPokemonsExternal } from "@models/PokemonsExternal";
 import { IPokemonExternalApiRepository, IResponseGetPokemonsDTO } from "@database/repositories/IPokemonExternalApiRepository";
 
 interface IGetDTO {

@@ -22,6 +22,7 @@ export default {
         "xss-tablet": { max: "510px" },
         "xs-tablet": { max: "550px" },
         tablet: { max: "768px" },
+        'lg-tablet': { max: "990px" },
         notebook: { min: "768px", max: "1440px" },
       },
       backgroundImage: {

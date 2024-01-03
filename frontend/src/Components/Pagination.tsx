@@ -1,52 +1,25 @@
-import { Icon } from "@iconify/react/dist/iconify.js";
 import { useContext } from "react";
 import { PokemonsContext } from "../Contex/PokemonsContext";
 
 export function Pagination() {
-  const { pagination, WhitchRequestSend, pokemons } =
-    useContext(PokemonsContext);
+  const { pagination } = useContext(PokemonsContext);
+
+  const initPagination = pagination.total == 0 ? 0 : pagination?.offset + 1;
+
+  const to =
+    pagination?.limit + pagination?.offset > pagination.total
+      ? pagination.total
+      : pagination?.limit + pagination?.offset;
+
+  const toPagination =
+    pagination.total == 0 ? 0 : (pagination.total == 1 ? 1 : to);
 
   return (
-    <section className="flex gap-3 w-full justify-center items-center mt-8">
-      <button
-        className="bg-redPrimary rounded p-1 cursor-pointer hover:bg-redSecondary transition-all hover:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
-        disabled={pagination.offset == 0 || pokemons.length == pagination.total}
-        onClick={() =>
-          WhitchRequestSend({
-            limit: pagination.limit,
-            offset:
-              pagination.offset - pagination.limit == 0
-                ? 0
-                : pagination.offset - pagination.limit,
-          })
-        }
-      >
-        <Icon
-          icon="eva:arrow-left-fill"
-          className="w-10 mobile:w-7"
-          color="white"
-        />
-      </button>
-      <button
-        className="bg-redPrimary rounded p-1 cursor-pointer hover:bg-redSecondary transition-all hover:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
-        disabled={
-          pagination.offset >= pagination.total ||
-          pagination.total == 0 ||
-          pagination.limit + pagination.offset >= pagination.total
-        }
-        onClick={() =>
-          WhitchRequestSend({
-            limit: pagination.limit,
-            offset: pagination.offset + pagination.limit,
-          })
-        }
-      >
-        <Icon
-          icon="eva:arrow-right-fill"
-          className="w-10 mobile:w-7"
-          color="white"
-        />
-      </button>
-    </section>
+    <div> 
+      <div className="text-sm">
+        <span className="font-bold text-base">{initPagination}</span> ao <span className="font-bold text-base">{toPagination}</span> de{" "}
+        <span className="font-bold text-base">{pagination?.total}</span>
+      </div>
+    </div>
   );
 }

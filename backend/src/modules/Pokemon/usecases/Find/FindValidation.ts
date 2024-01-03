@@ -11,7 +11,7 @@ class FindValidation {
       search: z
         .string({
           required_error: "Parametro para pesquisa do pokemon é obrigatorio",
-          invalid_type_error: "Parametro para pesquisa do pokemon deve ser uma string",
+          invalid_type_error: "Parametro para pesquisa do pokemon deve ser uma string ou number",
         })
         .min(1, { message: "O Parametro para pesquisa do pokemon deve ter pelo menos 1 caracter" }),
     });

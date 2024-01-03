@@ -30,7 +30,7 @@ export function DatasPokemon({ pokemon }: DatasPokemonProps) {
   }
 
   return (
-    <div className="flex flex-col items-center justify-center gap-2 flex-1">
+    <div className="flex flex-col items-center justify-center gap-2 flex-1 tablet:pb-5 mobile:pb-5">
       {pokemon && <ImagePokemon pokemon={pokemon} className="w-28 h-28" />}
       <div className="flex gap-2 items-center">
         <span className="font-Bevan">{pokemon?.name}</span>

@@ -13,7 +13,7 @@ class CreateValidation {
           required_error: "Nome é obrigatorio",
           invalid_type_error: "Nome deve ser uma string",
         })
-        .min(1, { message: "O nome deve ter pelo menos 1 caracter" })
+        .min(3, { message: "O nome deve ter pelo menos 3 caracter" })
         .trim(),
     });
 
