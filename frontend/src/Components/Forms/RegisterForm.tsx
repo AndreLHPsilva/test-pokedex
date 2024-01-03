@@ -31,9 +31,12 @@ export function RegisterForm({
   });
 
   async function handleRegister(data: TypeRegisterDataProps) {
-    HandleRegister(data);
-    await WaitToDisappear(1500);
-    setShowLogin((prev) => !prev);
+    const response = await HandleRegister(data);
+
+    if (response) {
+      await WaitToDisappear(1500);
+      setShowLogin((prev) => !prev);
+    }
   }
 
   return (
