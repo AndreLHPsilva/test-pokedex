@@ -17,7 +17,10 @@ Clone o repositório do projeto:
   ``` 
      cd test-pokedex
   ```
-
+Caso tenha o VSCODE em sua maquina:
+   ``` 
+     code .
+   ```
 Execute os seguintes comandos para configurar o backend.
 -  Backend:
    Entre na pasta do backend.
