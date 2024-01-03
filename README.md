@@ -36,7 +36,7 @@ Execute os seguintes comandos para configurar o frontend.
 
     Entre na pasta do frontend:
       ```
-       cd frontend
+       cd ../frontend
       ```
     Crie arquivo .ENV:
       -  Crie um arquivo .env com base no arquivo .env-example e configure as variáveis de ambiente necessárias. Você pode usar qualquer editor de texto para fazer isso.
