@@ -11,8 +11,12 @@ Caso não tenha em sua maquina, baixe Docker Desktop:
    https://www.docker.com/products/docker-desktop/
 
 Clone o repositório do projeto:
-  ``` git clone https://github.com/AndreLHPsilva/test-pokedex.git ```
-  ``` cd test-pokedex ```
+  ``` 
+     git clone https://github.com/AndreLHPsilva/test-pokedex.git
+  ```
+  ``` 
+     cd test-pokedex
+  ```
 
 Execute os seguintes comandos para configurar o backend.
 -  Backend:
