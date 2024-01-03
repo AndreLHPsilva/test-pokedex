@@ -49,6 +49,12 @@ Execute os seguintes comandos para configurar o frontend.
     ```
      docker-compose up --build -d
     ```
+- Aguarde alguns instantes e acesse a URL:
+    http://localhost:5173/
+
+OBS: Caso ocorra algum erro **Erro inesperado**, aguarde mais um pouco até o container estiver pronto. Após o container docker finalizar, atualize a página para utilizar o sistema.
+
+  
 
 ### Testando a API
    - Você pode testar utilizando o POSTMAN, para isso, faça o download do mesmo: https://www.postman.com/downloads/ e instale em seu PC. Após o download e instalação, você pode importar a collection que está na raiz do projeto, nome: test_pokedex.postman_collection.json ou acessar este link: https://documenter.getpostman.com/view/32027385/2s9YsFDtZ5 onde se encontra a Documentação da API, com isso você conseguirá acessar a collection clicando em **RUN IN POSTMAN**
