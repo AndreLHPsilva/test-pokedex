@@ -52,7 +52,7 @@ Execute os seguintes comandos para configurar o frontend.
 - Aguarde alguns instantes e acesse a URL:
     http://localhost:5173/
 
-OBS: Caso ocorra algum erro **Erro inesperado**, aguarde mais um pouco até o container estiver pronto. Após o container docker finalizar, atualize a página para utilizar o sistema.
+OBS: Caso ocorra algum erro **Erro inesperado**, aguarde mais um pouco até o container estiver pronto. Após o container docker ser iniciado, atualize a página para utilizar o sistema.
 
   
 
