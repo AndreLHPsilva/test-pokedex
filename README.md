@@ -44,9 +44,7 @@ Execute os seguintes comandos para configurar o frontend.
     ```
 
 ### Testando a API
-   - Você pode testar utilizando o POSTMAN, para isso, faça o download do mesmo: https://www.postman.com/downloads/ e instale em seu PC.
-
-     Após o download e instalação, você pode importar a collection que está na raiz do projeto, nome: test_pokedex.postman_collection.json ou acessar este link: https://documenter.getpostman.com/view/32027385/2s9YsFDtZ5 onde se encontra a Documentação da API, com isso você conseguirá acessar a collection clicando em *RUN IN POSTMAN*
+   - Você pode testar utilizando o POSTMAN, para isso, faça o download do mesmo: https://www.postman.com/downloads/ e instale em seu PC. Após o download e instalação, você pode importar a collection que está na raiz do projeto, nome: test_pokedex.postman_collection.json ou acessar este link: https://documenter.getpostman.com/view/32027385/2s9YsFDtZ5 onde se encontra a Documentação da API, com isso você conseguirá acessar a collection clicando em *RUN IN POSTMAN*
      ![image](https://github.com/AndreLHPsilva/test-pokedex/assets/112219645/12baf6d4-e4da-40e3-9286-707bc3959d97)
 
 ### Versão do NODE   
