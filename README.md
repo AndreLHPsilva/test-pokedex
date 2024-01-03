@@ -15,11 +15,11 @@ Clone o repositório do projeto:
 
 Execute os seguintes comandos para configurar o backend.
 -  Backend:
-  Entre na pasta do backend.
+    Entre na pasta do backend.
       ```
        cd backend
       ```
-  Crie arquivo .ENV:
+    Crie arquivo .ENV:
       -  Crie um arquivo .env com base no arquivo .env-example e configure as variáveis de ambiente necessárias. Você pode usar qualquer editor de texto para fazer isso.
 
 Execute os seguintes comandos para configurar o frontend.
