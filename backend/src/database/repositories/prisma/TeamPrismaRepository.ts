@@ -10,7 +10,7 @@ class TeamPrismaRepository implements ITeamRepository {
   constructor(private repository = prisma.team) {}
 
   async update({ name, team_id }: IUpdateTeamDTO): Promise<ITeams> {
-    return await this.repository.update({
+    return (await this.repository.update({
       where: { id: team_id },
       data: {
         name,
@@ -22,11 +22,11 @@ class TeamPrismaRepository implements ITeamRepository {
           },
         },
       },
-    });
+    })) as ITeams;
   }
 
   async find(team_id: string): Promise<ITeams | null> {
-    return await this.repository.findFirst({
+    return (await this.repository.findFirst({
       where: { id: team_id },
       include: {
         TeamsOnPokemons: {
@@ -35,11 +35,11 @@ class TeamPrismaRepository implements ITeamRepository {
           },
         },
       },
-    });
+    })) as ITeams;
   }
 
   async findByUserId(user_id: string): Promise<ITeams | null> {
-    return await this.repository.findFirst({
+    return (await this.repository.findFirst({
       where: {
         user_id,
       },
@@ -50,7 +50,7 @@ class TeamPrismaRepository implements ITeamRepository {
           },
         },
       },
-    });
+    })) as ITeams;
   }
 
   async create({ name, user_id }: ICreateTeamDTO): Promise<ITeams> {

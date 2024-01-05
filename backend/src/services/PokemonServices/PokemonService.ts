@@ -1,4 +1,3 @@
-import { IPokemonsExternal } from "@models/PokemonsExternal";
 import { IPokemonService } from "./Contracts/IPokemonService";
 import { axiosInstance } from "@config/axios";
 import {
@@ -10,7 +9,6 @@ import {
   IResponseGetAllPokemons,
   ITypesPokemonsReponse,
 } from "@database/repositories/externalApi/interfaces/IPokemonResponse";
-import { ITypesPokemons } from "@models/TypesPokemons";
 
 export class PokemonService implements IPokemonService {
   constructor(

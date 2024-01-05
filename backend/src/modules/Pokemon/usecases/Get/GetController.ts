@@ -10,7 +10,7 @@ class GetController {
     const getUseCase = container.resolve(GetUseCase);
     const response = await getUseCase.execute({
       limit: Number(limit),
-      offset: Number(offset)
+      offset: Number(offset),
     });
 
     return res.returnApi({

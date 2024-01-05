@@ -1,5 +1,4 @@
 import { IEvolutionsResponse, IGetAllPokemonsDTO, IPokemonByTypeResponse, IPokemonCompleted, IPokemonSpeciesResponse, IResponseGetAllPokemons, ITypesPokemonsReponse } from "@database/repositories/externalApi/interfaces/IPokemonResponse";
-import { ITypesPokemons } from "@models/TypesPokemons";
 
 export interface IPokemonService{
   getPokemonSpecies(pokemon_id: number): Promise<IPokemonSpeciesResponse>;

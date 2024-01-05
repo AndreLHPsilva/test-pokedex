@@ -1,5 +1,8 @@
 import { inject, injectable } from "tsyringe";
-import { IPokemonExternalApiRepository, IResponseGetPokemonsDTO } from "@database/repositories/IPokemonExternalApiRepository";
+import {
+  IPokemonExternalApiRepository, IResponsePaginationPokemonsDTO,
+  
+} from "@database/repositories/IPokemonExternalApiRepository";
 
 interface IGetDTO {
   limit: number;
@@ -13,7 +16,7 @@ class GetUseCase {
     private pokemonRepository: IPokemonExternalApiRepository
   ) {}
 
-  async execute(data: IGetDTO): Promise<IResponseGetPokemonsDTO> {
+  async execute(data: IGetDTO): Promise<IResponsePaginationPokemonsDTO> {
     return await this.pokemonRepository.get(data);
   }
 }

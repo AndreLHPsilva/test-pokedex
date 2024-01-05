@@ -35,14 +35,14 @@ class TeamsOnPokemonsPrismaRepository implements ITeamsOnPokemonsRepository {
   }
 
   async getByTeamId(team_id: string): Promise<ITeamsOnPokemons[]> {
-    return await this.repository.findMany({
+    return (await this.repository.findMany({
       where: {
         team_id,
       },
       include: {
         pokemon: true,
       },
-    });
+    })) as ITeamsOnPokemons[];
   }
 }
 

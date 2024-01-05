@@ -25,14 +25,17 @@ class FindByTypeValidation {
         .refine(
           (value) => {
             const parsedValue = parseInt(value, 10);
-            
+
             if (isNaN(parsedValue)) return false;
 
             if (parsedValue <= 0) return false;
 
             return true;
           },
-          { message: "Parâmetro Limit deve ser um número válido maior que zero." }
+          {
+            message:
+              "Parâmetro Limit deve ser um número válido maior que zero.",
+          }
         ),
       offset: z
         .string({

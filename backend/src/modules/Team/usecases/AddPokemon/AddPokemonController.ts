@@ -2,7 +2,6 @@ import { Request, Response } from "express";
 import { container } from "tsyringe";
 import { AddPokemonValidation } from "./AddPokemonValidation";
 import { AddPokemonUseCase } from "./AddPokemonUseCase";
-import { PokemonService } from "services/PokemonServices/PokemonService";
 
 class AddPokemonController {
   async handle(req: Request, res: Response) {

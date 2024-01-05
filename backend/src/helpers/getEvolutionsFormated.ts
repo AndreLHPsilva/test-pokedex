@@ -9,8 +9,10 @@ export function getEvolutionsFormated(evolutions: IEvolutionsResponse) {
     {
       name: evolutions.chain.species.name,
       position: 1,
+      link_url: ""
     },
   ];
+
 
   if (evolutions.chain.evolves_to.length > 0) {
     function getEvolutions(
@@ -21,6 +23,7 @@ export function getEvolutionsFormated(evolutions: IEvolutionsResponse) {
         evolutionsReturn.push({
           name: evolve.species.name,
           position: position + 1,
+          link_url: ""
         });
 
         if (evolve.evolves_to.length > 0) {

@@ -1,12 +1,10 @@
 import { ITeamRepository } from "@database/repositories/ITeamRepository";
 import { inject, injectable } from "tsyringe";
 import { IPokemonRepository } from "@database/repositories/IPokemonRepository";
-import { IPokemonExternalApiRepository } from "@database/repositories/IPokemonExternalApiRepository";
 import { ApiError } from "@errors/ApiError";
 import { IPokemonsExternal } from "@models/PokemonsExternal";
 import { IPokemons } from "@models/Pokemons";
 import { ITeamsOnPokemonsRepository } from "@database/repositories/ITeamsOnPokemonsRepository";
-import { ITeamsOnPokemons } from "@models/TeamsOnPokemons";
 import { ITeams } from "@models/Teams";
 
 interface IRemovePokemonDTO {

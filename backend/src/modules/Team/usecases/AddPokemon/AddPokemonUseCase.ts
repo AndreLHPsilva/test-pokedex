@@ -7,7 +7,6 @@ import { ApiError } from "@errors/ApiError";
 import { IPokemonsExternal } from "@models/PokemonsExternal";
 import { IPokemons } from "@models/Pokemons";
 import { ITeamsOnPokemonsRepository } from "@database/repositories/ITeamsOnPokemonsRepository";
-import { IPokemonService } from "services/PokemonServices/Contracts/IPokemonService";
 
 interface IAddPokemonDTO {
   user_id: string;
@@ -39,7 +38,7 @@ class AddPokemonUseCase {
       pokemon = await this.pokemonRepository.create({
         external_id: pokemon.id,
         name: pokemon.name,
-        img_url: pokemon.basic_img_url
+        img_url: pokemon.basic_img_url,
       });
     }
 

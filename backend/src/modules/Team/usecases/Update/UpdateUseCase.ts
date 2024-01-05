@@ -25,7 +25,7 @@ class UpdateUseCase {
 
     const pokemons = teamUpdated.TeamsOnPokemons?.map((teamOnPokemon) => {
       return teamOnPokemon.pokemon!;
-    })?.sort((a,b) => a.external_id - b.external_id);
+    })?.sort((a, b) => a.external_id - b.external_id);
 
     delete teamUpdated.TeamsOnPokemons;
 

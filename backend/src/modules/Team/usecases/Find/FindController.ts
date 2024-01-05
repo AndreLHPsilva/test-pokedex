@@ -3,7 +3,6 @@ import { container } from "tsyringe";
 import { FindValidation } from "./FindValidation";
 import { FindUseCase } from "./FindUseCase";
 
-
 class FindController {
   async handle(req: Request, res: Response) {
     const { team_id } = FindValidation.validate(req.params);

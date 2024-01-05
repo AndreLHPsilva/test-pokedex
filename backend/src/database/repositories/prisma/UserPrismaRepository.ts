@@ -6,20 +6,20 @@ class UserPrismaRepository implements IUserRepository {
   constructor(private repository = prisma.user) {}
 
   async findByEmail(email: string): Promise<IUsers | null> {
-    return await this.repository.findUnique({
+    return (await this.repository.findUnique({
       where: { email },
       include: {
         team: {
           include: {
             TeamsOnPokemons: {
               include: {
-                pokemon: true
-              }
+                pokemon: true,
+              },
             },
           },
         },
       },
-    });
+    })) as IUsers;
   }
   async findById(user_id: string): Promise<IUsers | null> {
     return await this.repository.findUnique({
