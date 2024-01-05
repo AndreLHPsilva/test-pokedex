@@ -64,7 +64,7 @@ export function LoginForm({
           {...register("email")}
           type="email"
           id="email"
-          className="w-full border border-zinc-200 rounded py-1.5 px-2 outline-none focus:shadow focus:shadow-zinc-200 focus:border-zinc-300 transition-all"
+          className="w-full border border-zinc-200 rounded py-1.5 px-2 outline-none focus:shadow focus:shadow-zinc-200 focus:border-yellow-600 transition-all"
         />
         {errors.email && (
           <span className="text-red-500 ">{errors.email.message}</span>
@@ -79,7 +79,7 @@ export function LoginForm({
             {...register("password")}
             type={isVisiblePassword ? "password" : "text"}
             id="password"
-            className="w-full border border-zinc-200 rounded py-1.5 pl-2 pr-8 outline-none focus:shadow focus:shadow-zinc-200 focus:border-zinc-300 transition-all"
+            className="w-full border border-zinc-200 rounded py-1.5 pl-2 pr-8 outline-none focus:shadow focus:shadow-zinc-200 focus:border-yellow-600 transition-all"
           />
           <button
             type="button"
