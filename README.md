@@ -119,7 +119,7 @@ OBS: Caso ocorra algum erro **Erro inesperado**, aguarde mais um pouco até o co
       "zod": "^3.22.4"
      
 ### Diagrama de Entidade-Relacionamento
-![ERD-podekex](https://github.com/AndreLHPsilva/test-pokedex/assets/112219645/c74b951b-28d2-404a-9ca4-dafa4f39bd55)
+![ERD](https://github.com/AndreLHPsilva/test-pokedex/assets/112219645/d952c4c6-3cf7-4785-94f0-72ad2bf687c3)
 
 ### Imagens do Projeto
 ![Cadastro](https://github.com/AndreLHPsilva/test-pokedex/assets/112219645/8e2b8d16-4ac3-4fd1-ab5a-901c3b474618)
