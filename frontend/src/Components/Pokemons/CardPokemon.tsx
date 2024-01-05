@@ -9,7 +9,10 @@ interface CardPokemonProps {
 
 export function CardPokemon({ pokemon }: CardPokemonProps) {
   return (
-    <section className="flex justify-center items-center">
+    <section
+      className="flex justify-center items-center"
+      title={`Clique para ver mais sobre ${pokemon.name.toUpperCase()}`}
+    >
       <Link
         to={`/pokemon/${pokemon.id}`}
         className="transition-all hover:scale-95  hover:shadow-lg"
