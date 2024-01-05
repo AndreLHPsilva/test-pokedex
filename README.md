@@ -25,11 +25,12 @@ Execute os seguintes comandos para configurar o backend.
 -  Backend:
    Entre na pasta do backend.
       ```
-       cd backend
+      cd backend
       ```
-    Crie arquivo .ENV:
-      -  Crie um arquivo .env com base no arquivo .env-example e configure as variáveis de ambiente necessárias. Você pode usar qualquer editor de texto para fazer isso.
-
+    Copie arquivo .ENV.EXEMPLE:
+      ```
+      cp .\.env.exemple .env
+      ```
 Execute os seguintes comandos para configurar o frontend.
 -  Frontend:
   Abra uma nova janela do terminal ou vá para o diretório raiz do projeto se você saiu da pasta "backend".
@@ -38,8 +39,10 @@ Execute os seguintes comandos para configurar o frontend.
       ```
        cd ../frontend
       ```
-    Crie arquivo .ENV:
-      -  Crie um arquivo .env com base no arquivo .env-example e configure as variáveis de ambiente necessárias. Você pode usar qualquer editor de texto para fazer isso.
+    Copie arquivo .ENV.EXEMPLE:
+      ```
+      cp .\.env.exemple .env
+      ```
 
 -  Volte para raiz do projeto:
     ```
