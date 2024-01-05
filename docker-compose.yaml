@@ -17,6 +17,8 @@ services:
       DATABASE_URL: "postgresql://pguser:pgpassword@database:5432/pokedex?schema=public"
       JWT_SECRET: "TEST-POKEMON"
       POKE_URL: "https://pokeapi.co/api/v2"
+      FRONT_URL: "http://localhost:5173"
+      PORT: 3000
     build:
       context: ./backend
     ports:

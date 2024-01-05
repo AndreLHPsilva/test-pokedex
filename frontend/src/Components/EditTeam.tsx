@@ -7,7 +7,7 @@ import {
 } from "../Types/Zod/EditTeamTypes";
 import { useForm } from "react-hook-form";
 import { Button } from "./Global/Button";
-import { Notifications } from "../Helpers/Notifications";
+import { SendConfirm, SendReport } from "../Helpers/Notifications";
 import { useContext } from "react";
 import { TeamContext } from "../Contex/TeamContext";
 
@@ -32,13 +32,25 @@ export function EditTeam({ team, onClickIcon }: IEditTeamProps) {
 
   function handleEditTeam(data: TypeEditTeamDataProps) {
     if (data.name == team.name) {
-      return Notifications({
+      return SendReport({
         type: "error",
-        message: "Nenhuma alteração identificada!",
+        title: "Erro ao atualizar time",
+        text: `Nenhuma alteração identificada. Nome ainda persiste: <strong>${team.name}</strong>`,
+        btnCallback: () => {},
       });
     }
 
-    UpdateTeam({ name: data.name, team_id: team.id });
+    SendConfirm({
+      message: `Tem certeza que deseja <strong>ATUALIZAR</strong> seu time <br> De: <strong>${team.name.toUpperCase()}</strong><br> Para: <strong>${data.name.toUpperCase()}</strong>?`,
+      title: "<strong>Confirme</strong>",
+      okButtonText: "Confirmar",
+      cancelButtonText: "Cancelar",
+      okButtonCallback: () => UpdateTeam({ name: data.name, team_id: team.id }),
+      options: {
+        plainText: false,
+        messageMaxLength: 450
+      },
+    });
   }
 
   return (
@@ -67,12 +79,16 @@ export function EditTeam({ team, onClickIcon }: IEditTeamProps) {
           )}
         </div>
       </form>
-      <Icon
-        icon="fluent:edit-off-24-regular"
-        onClick={() => onClickIcon(false)}
+      <div
+        title="Clique para fechar a edição do time"
         className="cursor-pointer hover:scale-95 mobile:self-start mobile:mt-1.5"
-        width={18}
-      />
+      >
+        <Icon
+          icon="fluent:edit-off-24-regular"
+          onClick={() => onClickIcon(false)}
+          width={18}
+        />
+      </div>
     </span>
   );
 }

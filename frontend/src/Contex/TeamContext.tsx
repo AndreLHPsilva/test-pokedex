@@ -9,54 +9,96 @@ import {
 } from "../Api/Team";
 import { ICreateTeamDTO, ITeamContext } from "../Types/TeamContext/TeamContext";
 import { AuthContext } from "./AuthContext";
-import { WaitToDisappear } from "../Helpers/Notifications";
+import { SendReport } from "../Helpers/Notifications";
 
 const TeamContext = createContext<ITeamContext>({} as ITeamContext);
 
 const TeamProvider = ({ children }: { children: React.ReactNode }) => {
-  const { setTeam } = useContext(AuthContext);
+  const { setTeam, team } = useContext(AuthContext);
 
   async function CreateTeam({ name }: ICreateTeamDTO) {
-    const team = await handleCreateTeam(name);
+    const teamCreated = await handleCreateTeam(name);
 
-    if (team) {
-      setTeam(team);
+    if (teamCreated) {
+      setTeam(teamCreated);
       localStorage.removeItem("team");
-      localStorage.setItem("team", JSON.stringify(team));
+      localStorage.setItem("team", JSON.stringify(teamCreated));
+
+      const nameTeam = teamCreated.name.toUpperCase();
+
+      SendReport({
+        type: "success",
+        title: "Sucesso!",
+        text: `Time <strong>${nameTeam}</strong> criado com sucesso.`,
+        btnCallback: () => {},
+      });
     }
   }
 
   async function AddPokemon(external_id: number) {
-    const team = await handleAddPokemon(external_id);
+    const teamResponse = await handleAddPokemon(external_id);
 
-    if (team) {
-      setTeam(team);
+    if (teamResponse) {
+      const pokemonCreated = teamResponse.pokemons.find((pokemon) => {
+        return pokemon.external_id === external_id;
+      });
+
+      const pokemonName = pokemonCreated?.name?.toUpperCase();
+      const firstNameTeam = teamResponse.name.split(" ")[0].toUpperCase();
+
+      setTeam(teamResponse);
       localStorage.removeItem("team");
-      localStorage.setItem("team", JSON.stringify(team));
-      await WaitToDisappear(1500);
-      window.location.replace("/home");
+      localStorage.setItem("team", JSON.stringify(teamResponse));
+      SendReport({
+        type: "success",
+        title: "Sucesso!",
+        text: `O Pokemon <strong>${pokemonName}</strong> foi <strong>ADICIONADO</strong> com sucesso ao seu time: <strong>${firstNameTeam}</strong>`,
+        btnCallback: () => window.location.replace("/home"),
+      });
     }
   }
 
   async function RemovePokemon(data: IRemovePokemonDTO) {
-    const team = await handleRemovePokemon(data);
+    const oldTeam = team;
+    const teamResponse = await handleRemovePokemon(data);
 
-    if (team) {
-      setTeam(team);
+    if (teamResponse) {
+      const pokemonRemoved = oldTeam?.pokemons.find((pokemon) => {
+        return pokemon.id === data.pokemon_id;
+      });
+
+      const firstNameTeam = teamResponse.name.split(" ")[0].toUpperCase();
+      const pokemonName = pokemonRemoved!.name.split(" ")[0].toUpperCase();
+
+      setTeam(teamResponse);
       localStorage.removeItem("team");
-      localStorage.setItem("team", JSON.stringify(team));
+      localStorage.setItem("team", JSON.stringify(teamResponse));
+      SendReport({
+        type: "success",
+        title: "Sucesso!",
+        text: `O Pokemon <strong>${pokemonName}</strong> foi <strong>REMOVIDO</strong> com sucesso do seu time: <strong>${firstNameTeam}</strong>`,
+        btnCallback: () => {},
+      });
     }
   }
 
   async function UpdateTeam(data: IUpdateTeamDTO) {
-    const team = await handleUpdateTeam(data);
+    const teamUpdated = await handleUpdateTeam(data);
 
-    if (team) {
-      setTeam(team);
+    if (teamUpdated) {
+      setTeam(teamUpdated);
       localStorage.removeItem("team");
-      localStorage.setItem("team", JSON.stringify(team));
-      await WaitToDisappear(1550);
-      window.location.reload();
+      localStorage.setItem("team", JSON.stringify(teamUpdated));
+      SendReport({
+        type: "success",
+        title: "Sucesso!",
+        text: `Time atualizado com sucesso para: <strong>${teamUpdated.name}</strong>`,
+        btnCallback: () => window.location.reload(),
+        option: {
+          plainText: false,
+          messageMaxLength: 450,
+        },
+      });
     }
   }
 

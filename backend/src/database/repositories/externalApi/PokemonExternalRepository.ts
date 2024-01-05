@@ -1,15 +1,7 @@
 import { IPokemonsExternal } from "@models/PokemonsExternal";
-import { axiosInstance } from "@config/axios";
 import {
-  IAbilitiesResponse,
-  IEvolutionsResponse,
-  IEvolvesToResponse,
-  IPokemonByTypeResponse,
-  IPokemonCompleted,
+  IPokemonShort,
   IPokemonsByTypeResponse,
-  IStatResponse,
-  ITypeResponse,
-  ITypesPokemonsReponse,
 } from "./interfaces/IPokemonResponse";
 import {
   IFindByTypeDTO,
@@ -19,37 +11,49 @@ import {
 } from "../IPokemonExternalApiRepository";
 import { IEvolutions } from "@models/Evoluetions";
 import { ITypesPokemons } from "@models/TypesPokemons";
-
-interface IPokemonShort {
-  name: string;
-  url: string;
-}
-
-interface IResponseGetAllPokemons {
-  count: number;
-  next: string;
-  previous: boolean;
-  results: IPokemonShort[];
-}
-
-interface IStat {
-  name: string;
-  qnt: number;
-}
+import { PokemonService } from "services/PokemonServices/PokemonService";
+import { getStatsFormated } from "@helpers/getStatsFormated";
+import { getTypesFormated } from "@helpers/getTypesFormated";
+import { getAbilitiesFormated } from "@helpers/getAbilitiesFormated";
+import { getEvolutionsFormated } from "@helpers/getEvolutionsFormated";
+import { IPokemonNames } from "@models/PokemonNames";
 
 class PokemonExternalRepository implements IPokemonExternalApiRepository {
-  constructor(
-    private base_url = process.env.POKE_URL ?? "https://pokeapi.co/api/v2"
-  ) {}
+  constructor(private pokemonServices = new PokemonService()) {}
+
+  async getPokemonNames(): Promise<IPokemonNames[]> {
+    try {
+      const getLimit = await this.pokemonServices.getAllPokemons({
+        limit: 1,
+        offset: 0,
+      });
+
+      const limit = getLimit.count;
+
+      const pokemons = await this.pokemonServices.getAllPokemons({
+        limit,
+        offset: 0,
+      });
+
+      return pokemons.results.map((pokemon) => {
+        return {
+          name: pokemon.name,
+        };
+      });
+    } catch (error) {
+      return [];
+    }
+  }
 
   async get({
     limit,
     offset,
   }: IGetPokemonsDTO): Promise<IResponsePaginationPokemonsDTO> {
     try {
-      const pokemons: IResponseGetAllPokemons = await axiosInstance.get(
-        `${this.base_url}/pokemon?limit=${limit}&offset=${offset}`
-      );
+      const pokemons = await this.pokemonServices.getAllPokemons({
+        limit,
+        offset,
+      });
 
       const total = pokemons.count;
 
@@ -68,31 +72,22 @@ class PokemonExternalRepository implements IPokemonExternalApiRepository {
 
       await Promise.all(
         pokemons?.results?.map(async (pokemon: IPokemonShort) => {
-          const allInformationPokemon: IPokemonCompleted =
-            await axiosInstance.get(pokemon.url);
-          const stats: IStat[] = allInformationPokemon.stats?.map(
-            (stat: IStatResponse) => {
-              return {
-                name: stat.stat.name,
-                qnt: stat.base_stat,
-              };
-            }
+          const allInformationPokemon = await this.pokemonServices.findByUrl(
+            pokemon.url
           );
-          const types: string[] = allInformationPokemon.types.map(
-            (type: ITypeResponse) => {
-              return type.type.name;
-            }
-          );
-          const abilities: string[] = allInformationPokemon.abilities.map(
-            (abilitiy: IAbilitiesResponse) => {
-              return abilitiy.ability.name;
-            }
+
+          const stats = getStatsFormated(allInformationPokemon.stats);
+          const types = getTypesFormated(allInformationPokemon.types);
+          const abilities = getAbilitiesFormated(
+            allInformationPokemon.abilities
           );
 
           const img_url =
             allInformationPokemon.sprites.versions["generation-v"][
               "black-white"
             ].animated.front_default;
+
+          const basic_img_url = allInformationPokemon.sprites.front_default;
 
           const evolutions = await this.findEvolutions(
             allInformationPokemon.id
@@ -108,6 +103,7 @@ class PokemonExternalRepository implements IPokemonExternalApiRepository {
             types,
             stats,
             img_url,
+            basic_img_url,
             evolutions,
           });
         })
@@ -135,9 +131,7 @@ class PokemonExternalRepository implements IPokemonExternalApiRepository {
 
   async getTypes(): Promise<ITypesPokemons[]> {
     try {
-      const types: ITypesPokemonsReponse = await axiosInstance.get(
-        `${this.base_url}/type`
-      );
+      const types = await this.pokemonServices.getTypes();
 
       return types.results.map((type) => {
         return { name: type.name };
@@ -149,29 +143,17 @@ class PokemonExternalRepository implements IPokemonExternalApiRepository {
 
   async find(search: string): Promise<IPokemonsExternal | null> {
     try {
-      const pokemon: IPokemonCompleted | null = await axiosInstance.get(
-        `${this.base_url}/pokemon/${search}`
-      );
+      const pokemon = await this.pokemonServices.find(search);
 
-      const stats: IStat[] = pokemon!.stats?.map((stat: IStatResponse) => {
-        return {
-          name: stat.stat.name,
-          qnt: stat.base_stat,
-        };
-      });
-
-      const types: string[] = pokemon!.types.map((type: ITypeResponse) => {
-        return type.type.name;
-      });
-      const abilities: string[] = pokemon!.abilities.map(
-        (abilitiy: IAbilitiesResponse) => {
-          return abilitiy.ability.name;
-        }
-      );
+      const stats = getStatsFormated(pokemon!.stats);
+      const types = getTypesFormated(pokemon!.types);
+      const abilities = getAbilitiesFormated(pokemon!.abilities);
 
       const img_url =
         pokemon!.sprites.versions["generation-v"]["black-white"].animated
           .front_default;
+
+      const basic_img_url = pokemon!.sprites.front_default;
 
       const evolutions = await this.findEvolutions(pokemon?.id!);
 
@@ -186,6 +168,7 @@ class PokemonExternalRepository implements IPokemonExternalApiRepository {
         stats,
         evolutions,
         img_url,
+        basic_img_url,
       };
 
       return pokemonsReturn;
@@ -200,9 +183,7 @@ class PokemonExternalRepository implements IPokemonExternalApiRepository {
     type,
   }: IFindByTypeDTO): Promise<IResponsePaginationPokemonsDTO> {
     try {
-      const pokemons: IPokemonByTypeResponse = await axiosInstance.get(
-        `${this.base_url}/type/${type}`
-      );
+      const pokemons = await this.pokemonServices.findByType(type);
 
       if (pokemons.pokemon.length == 0)
         return {
@@ -219,34 +200,22 @@ class PokemonExternalRepository implements IPokemonExternalApiRepository {
 
       await Promise.all(
         pokemonsForLoop.map(async (pokemon: IPokemonsByTypeResponse) => {
-          const allInformationPokemon: IPokemonCompleted =
-            await axiosInstance.get(pokemon.pokemon.url);
-
-          const stats: IStat[] = allInformationPokemon.stats?.map(
-            (stat: IStatResponse) => {
-              return {
-                name: stat.stat.name,
-                qnt: stat.base_stat,
-              };
-            }
+          const allInformationPokemon = await this.pokemonServices.findByUrl(
+            pokemon.pokemon.url
           );
 
-          const types: string[] = allInformationPokemon.types.map(
-            (type: ITypeResponse) => {
-              return type.type.name;
-            }
-          );
-
-          const abilities: string[] = allInformationPokemon.abilities.map(
-            (abilitiy: IAbilitiesResponse) => {
-              return abilitiy.ability.name;
-            }
+          const stats = getStatsFormated(allInformationPokemon.stats);
+          const types = getTypesFormated(allInformationPokemon.types);
+          const abilities = getAbilitiesFormated(
+            allInformationPokemon.abilities
           );
 
           const img_url =
             allInformationPokemon.sprites.versions["generation-v"][
               "black-white"
             ].animated.front_default;
+
+          const basic_img_url = allInformationPokemon.sprites.front_default;
 
           const evolutions = await this.findEvolutions(
             allInformationPokemon.id
@@ -262,13 +231,14 @@ class PokemonExternalRepository implements IPokemonExternalApiRepository {
             types,
             stats,
             img_url,
+            basic_img_url,
             evolutions,
           });
         })
       );
 
       return {
-        pokemons: pokemonsReturn.sort((a,b) => a.id - b.id),
+        pokemons: pokemonsReturn.sort((a, b) => a.id - b.id),
         pagination: {
           limit,
           offset,
@@ -289,41 +259,22 @@ class PokemonExternalRepository implements IPokemonExternalApiRepository {
 
   async findEvolutions(pokemon_id: number): Promise<IEvolutions[]> {
     try {
-      const pokemon: any = await axiosInstance.get(
-        `${this.base_url}/pokemon-species/${pokemon_id}`
-      );
+      const pokemon = await this.pokemonServices.getPokemonSpecies(pokemon_id);
 
-      const evoluetions: IEvolutionsResponse = await axiosInstance.get(
+      const evolutions = await this.pokemonServices.getEvolutions(
         pokemon.evolution_chain.url
       );
-      const evoluetionsReturn: IEvolutions[] = [
-        {
-          name: evoluetions.chain.species.name,
-          position: 1,
-        },
-      ];
 
-      if (evoluetions.chain.evolves_to.length > 0) {
-        function getEvolutions(
-          evolvesTo: IEvolvesToResponse[],
-          position: number
-        ): void {
-          evolvesTo.forEach((evolve) => {
-            evoluetionsReturn.push({
-              name: evolve.species.name,
-              position: position + 1,
-            });
+      const evolutions_formatted = getEvolutionsFormated(evolutions);
 
-            if (evolve.evolves_to.length > 0) {
-              getEvolutions(evolve.evolves_to, position + 1);
-            }
-          });
-        }
+      await Promise.all(evolutions_formatted.map( async (evolution, index) => {
+        const poke = await this.pokemonServices.find(evolution.name);
 
-        getEvolutions(evoluetions.chain.evolves_to, 1);
-      }
+        evolutions_formatted[index]['basic_img_url'] = poke?.sprites!.front_default;
+        evolutions_formatted[index]['link_url'] = `${process.env.FRONT_URL}/pokemon/${poke!.id}`;
+      }))
 
-      return evoluetionsReturn;
+      return evolutions_formatted;
     } catch (error) {
       return [];
     }

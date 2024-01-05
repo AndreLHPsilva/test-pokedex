@@ -1,5 +1,6 @@
 import { IPokemonsExternal } from "../Types/PokemonsContext/PokemonsContext";
 import { PokemonTypeColor } from "../Helpers/PokemonTypeColor";
+import { Evolutions } from "./Pokemons/Evolutions";
 
 interface SpecificationsPokemonProps {
   pokemon: IPokemonsExternal;
@@ -13,23 +14,6 @@ export function SpecificationsPokemon({ pokemon }: SpecificationsPokemonProps) {
   return (
     <div className="flex flex-col px-10 gap-3 flex-1 w-full justify-center items-center tablet:px-5 mobile:px-5 tablet:pt-5 mobile:pt-5">
       <div className="flex items-start tablet:justify-center gap-10">
-        <div>
-          <h2 className="font-medium text-xs text-gray-500">Evoluções:</h2>
-          <div className="flex flex-col">
-            {pokemon?.evolutions.map((evolution) => {
-              return (
-                <div>
-                  <span className="pl-3 font-Bevan text-xs">
-                    {evolution.position}º
-                  </span>
-                  <span className="pl-3 font-VT323 text-xl">
-                    {evolution.name}
-                  </span>
-                </div>
-              );
-            })}
-          </div>
-        </div>
         <div>
           <h2 className="font-medium text-xs text-gray-500">Habilidades:</h2>
           <div className="flex flex-col">
@@ -60,6 +44,7 @@ export function SpecificationsPokemon({ pokemon }: SpecificationsPokemonProps) {
           })}
         </div>
       </div>
+      <Evolutions pokemon={pokemon} />
     </div>
   );
 }

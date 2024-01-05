@@ -11,6 +11,8 @@ import { ITeamsOnPokemonsRepository } from "@database/repositories/ITeamsOnPokem
 import { TeamsOnPokemonsPrismaRepository } from "@database/repositories/prisma/TeamsOnPokemonsPrismaRepository";
 import { ITeamRepository } from "@database/repositories/ITeamRepository";
 import { TeamPrismaRepository } from "@database/repositories/prisma/TeamPrismaRepository";
+import { IPokemonService } from "services/PokemonServices/Contracts/IPokemonService";
+import { PokemonService } from "services/PokemonServices/PokemonService";
 
 container.registerSingleton<IUserRepository>(
   "UserRepository",
@@ -35,5 +37,10 @@ container.registerSingleton<ITeamRepository>(
 container.registerSingleton<ITeamsOnPokemonsRepository>(
   "TeamsOnPokemonsRepository",
   TeamsOnPokemonsPrismaRepository
+);
+
+container.registerSingleton<IPokemonService>(
+  "PokemonService",
+  PokemonService
 );
 

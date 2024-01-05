@@ -1,3 +1,5 @@
+import { boolean } from "zod";
+
 export interface IAbilitiesResponse {
   ability: {
     name: string;
@@ -61,7 +63,7 @@ interface ISpriteResponse {
   back_female: string | null;
   back_shiny: string | null;
   back_shiny_female: string | null;
-  front_default: string | null;
+  front_default: string;
   front_female: string | null;
   front_shiny: string | null;
   front_shiny_female: string | null;
@@ -356,14 +358,84 @@ export interface IEvolutionsResponse {
   id: number;
 }
 
-export interface IResultsTypesResponse{
+export interface IResultsTypesResponse {
   name: string;
   url: string;
-} 
+}
 
-export interface ITypesPokemonsReponse{
-  "count": number,
-  "next": string,
-  "previous": string,
-  "results": IResultsTypesResponse[]
+export interface ITypesPokemonsReponse {
+  count: number;
+  next: string;
+  previous: string;
+  results: IResultsTypesResponse[];
+}
+
+export interface IGetAllPokemonsDTO {
+  limit?: number;
+  offset?: number;
+  url?: string;
+}
+
+export interface IPokemonShort {
+  name: string;
+  url: string;
+}
+
+export interface IResponseGetAllPokemons {
+  count: number;
+  next: string;
+  previous: boolean;
+  results: IPokemonShort[];
+}
+
+export interface IStat {
+  name: string;
+  qnt: number;
+}
+
+export interface IPokemonSpeciesResponse {
+  base_happiness: number;
+  capture_rate: number;
+  color: {
+    name: string;
+    url: string;
+  };
+  egg_groups: [];
+  evolution_chain: {
+    url: string;
+  };
+  evolves_from_species: any;
+  flavor_text_entries: [];
+  form_descriptions: [];
+  forms_switchable: boolean;
+  gender_rate: number;
+  genera: [];
+  generation: {
+    name: string;
+    url: string;
+  };
+  growth_rate: {
+    name: string;
+    url: string;
+  };
+  habitat: {
+    name: string;
+    url: string;
+  };
+  has_gender_differences: boolean;
+  hatch_counter: number;
+  id: number;
+  is_baby: boolean;
+  is_legendary: boolean;
+  is_mythical: boolean;
+  name: string;
+  names: any[];
+  order: number;
+  pal_park_encounters: any[];
+  pokedex_numbers: any[];
+  shape: {
+    name: string;
+    url: string;
+  };
+  varieties: any[];
 }

@@ -4,10 +4,12 @@ import { ListPokemonsTeam } from "./Pokemons/ListPokemonsTeam";
 import { Link } from "react-router-dom";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import { EditTeam } from "./EditTeam";
+import { VerifyTeamFull } from "../Helpers/VerifyTeamFull";
 
 export function MyTeamContent() {
   const { team, user } = useContext(AuthContext);
   const firstName = user?.name.split(" ")[0];
+  const qnt_pokemons_by_team = team?.pokemons.length;
 
   const [showEditTeam, setShowEditTeam] = useState(false);
 
@@ -16,12 +18,16 @@ export function MyTeamContent() {
       return (
         <span className="inline-flex items-center gap-2">
           <span className="uppercase font-bold">{team?.name}</span>
-          <Icon
-            icon="fluent:edit-48-regular"
-            onClick={() => setShowEditTeam(true)}
+          <div
             className="cursor-pointer hover:scale-95"
-            width={18}
-          />
+            title="Clique para editar o time"
+          >
+            <Icon
+              icon="fluent:edit-48-regular"
+              onClick={() => setShowEditTeam(true)}
+              width={18}
+            />
+          </div>
         </span>
       );
     }
@@ -29,6 +35,38 @@ export function MyTeamContent() {
     if (showEditTeam && team) {
       return <EditTeam onClickIcon={setShowEditTeam} team={team} />;
     }
+  }
+
+  function renderInformationLengthTeam() {
+    return (
+      <p className="text-sm mt-3">
+        Você só pode ter no máximo{" "}
+        <strong className="text-lg mobile:text-base">5</strong> pokemons no
+        time.{" "}
+        <span>
+          Atualmente{" "}
+          {VerifyTeamFull(team) && (
+            <span>
+              seu time está com
+              <strong className="uppercase text-lg mobile:text-base">
+                {" "}
+                capacidade máxima.
+              </strong>
+            </span>
+          )}
+          {!VerifyTeamFull(team) && (
+            <>
+              seu time tem{" "}
+              <span className="font-bold text-lg mobile:text-base">
+                {qnt_pokemons_by_team}
+              </span>{" "}
+              de <strong className="text-lg mobile:text-base">5</strong>{" "}
+              pokemons.
+            </>
+          )}
+        </span>
+      </p>
+    );
   }
 
   return (
@@ -42,16 +80,13 @@ export function MyTeamContent() {
           <span> ao seu time </span>
           {renderTeamName()}
         </h1>
-        <p className="text-sm">
-          Aqui você pode verificar quais pokemons estão presentes no seu time e
-          caso queira, removê-los.
-        </p>
+        {renderInformationLengthTeam()}
       </div>
-      <div className="flex flex-col">
+      <div className="flex flex-col mt-10 notebook:mt-0 tablet:mt-0 mobile:mt-0">
         <h2 className="font-bold text-sm self-start font-Bevan uppercase tracking-widest">
           Seus pokemons:
         </h2>
-        <div className="flex flex-col pl-3 gap-2 divide-y">
+        <div className="flex pl-3 gap-5 divide-x notebook:flex-col notebook:divide-y tablet:flex-col tablet:divide-y mobile:flex-col mobile:divide-y notebook:divide-x-0 tablet:divide-x-0 mobile:divide-x-0">
           {team && team?.pokemons?.length > 0 ? (
             team?.pokemons.map((pokemon) => {
               return <ListPokemonsTeam pokemon={pokemon} team_id={team.id} />;
@@ -64,6 +99,7 @@ export function MyTeamContent() {
               <Link
                 to={"/home"}
                 className="text-redPrimary animate-bounce font-bold text-sm"
+                title="Voltar para lista de pokemons"
               >
                 Adicione agora mesmo!
               </Link>

@@ -4,14 +4,22 @@ import { Search } from "../Components/Search";
 import { PokemonsContext } from "../Contex/PokemonsContext";
 import { ButtonsPagination } from "../Components/ButtonsPagination";
 import { ButtonToTop } from "../Components/ButtonToTop";
+import { CardPokemonSkeleton } from "../Components/Global/CardPokemonSkeleton";
 
 export function Home() {
-  const { GetTypesPokemons, GetPokemons, setSearch, setTypeSelected } =
-    useContext(PokemonsContext);
+  const {
+    GetTypesPokemons,
+    GetPokemons,
+    setSearch,
+    setTypeSelected,
+    GetPokemonNames,
+    loadingPokemon,
+  } = useContext(PokemonsContext);
 
   useEffect(() => {
     GetPokemons();
     GetTypesPokemons();
+    GetPokemonNames();
     setSearch("");
     setTypeSelected(null);
   }, []);
@@ -20,7 +28,8 @@ export function Home() {
     <>
       <Search />
       <ButtonsPagination />
-      <ListPokemons />
+      {!loadingPokemon && <ListPokemons />}
+      {loadingPokemon && <CardPokemonSkeleton />}
       <ButtonToTop />
     </>
   );

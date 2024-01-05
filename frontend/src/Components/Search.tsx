@@ -3,6 +3,12 @@ import { Button } from "./Global/Button";
 import { PokemonsContext } from "../Contex/PokemonsContext";
 import Select from "react-select";
 import { IOptionsTypePokemon } from "../Types/PokemonsContext/PokemonsContext";
+import { Icon } from "@iconify/react/dist/iconify.js";
+
+interface IInputValues {
+  label: string;
+  value: string;
+}
 
 export function Search() {
   const {
@@ -15,6 +21,7 @@ export function Search() {
     setSearch,
     search,
     FindPokemon,
+    pokemonNames,
   } = useContext(PokemonsContext);
 
   function handleSelect(data: IOptionsTypePokemon | null) {
@@ -29,34 +36,66 @@ export function Search() {
     }
   }
 
-  function handleSearch(value: string) {
+  function handleSearch(value: IInputValues) {
     if (!value) {
-      ClearSearchs();
+      return ClearSearchs();
     }
-    setSearch(value);
+
+    setSearch(value.value);
   }
 
   return (
-    <section className="flex justify-around items-center tablet:flex-col tablet:gap-2">
+    <section className="flex justify-around items-center tablet:flex-col tablet:gap-2 mobile:items-start mobile:px-10">
       <div className="flex gap-2 items-center text-sm">
         <label htmlFor="search" className="font-bold text-xs">
           Pesquise por:
         </label>
-        <input
-          type="text"
-          value={search}
-          id="search"
-          onChange={(e) => handleSearch(e.target.value)}
+        <Select
+          value={search ? { value: search, label: search } : null}
+          onChange={(e) => handleSearch(e as IInputValues)}
+          isMulti={false}
+          isSearchable={true}
+          isClearable={true}
+          blurInputOnSelect={true}
+          closeMenuOnSelect={true}
           placeholder="Nome ou Número"
-          className="outline-none border border-zinc-200 rounded px-2 py-1.5  mobile:text-xs"
+          options={pokemonNames.map((name) => ({
+            label: name.name,
+            value: name.name,
+          }))}
+          noOptionsMessage={() => "Nenhum nome encontrado!"}
+          className="text-xs w-48 mobile:w-36 scroll-custom"
+          styles={{
+            control: (provided) => ({
+              ...provided,
+              minHeight: "unset",
+            }),
+            dropdownIndicator: (provided) => ({
+              ...provided,
+              padding: "5px",
+              display: "none",
+            }),
+            clearIndicator: (provided) => ({
+              ...provided,
+            }),
+            indicatorSeparator: (provided) => ({
+              ...provided,
+              margin: "2px",
+            }),
+            indicatorsContainer: (provided) => ({
+              ...provided,
+              margin: "2px",
+            }),
+          }}
         />
+
         <Button
-          className="uppercase font-bold bg-yellow-500 border-1 shadow-md border-black hover:bg-yellow-700 hover:scale-95 text-white custom-text-shadow-xs transition-all duration-300 tracking-wider mobile:text-xs mobile:tracking-normal mobile:py-1 mobile:px-1.5 disabled:opacity-50 disabled:cursor-not-allowed"
+          className="uppercase font-bold bg-yellow-500 border-1 shadow-md border-black hover:bg-yellow-700 hover:scale-95 text-white custom-text-shadow-xs transition-all duration-300 tracking-wider mobile:text-xs mobile:tracking-normal disabled:opacity-50 disabled:cursor-not-allowed p-1.5"
           onClick={() => FindPokemon(search)}
           isDisabled={search ? false : true}
           title="Digite algum nome ou número para pesquisar"
         >
-          Pesquisar
+          <Icon icon="wpf:search" width={20} />
         </Button>
       </div>
       <div className="flex items-center gap-2">
@@ -77,6 +116,28 @@ export function Search() {
           ]}
           noOptionsMessage={() => "Nenhum tipo encontrado!"}
           className="text-xs w-32 scroll-custom"
+          styles={{
+            control: (provided) => ({
+              ...provided,
+              minHeight: "unset",
+            }),
+            dropdownIndicator: (provided) => ({
+              ...provided,
+              padding: "5px",
+              display: "none",
+            }),
+            clearIndicator: (provided) => ({
+              ...provided,
+            }),
+            indicatorSeparator: (provided) => ({
+              ...provided,
+              margin: "2px",
+            }),
+            indicatorsContainer: (provided) => ({
+              ...provided,
+              margin: "2px",
+            }),
+          }}
         />
       </div>
     </section>

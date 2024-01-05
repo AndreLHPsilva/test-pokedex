@@ -1,7 +1,8 @@
 import { axiosInstance } from "../Config/Axios";
-import { Notifications } from "../Helpers/Notifications";
+import { SendReport } from "../Helpers/Notifications";
 import {
   IPaginationParamsDTO,
+  IPokemonNames,
   IPokemonsExternal,
   IResponseGetPokemonsDTO,
 } from "../Types/PokemonsContext/PokemonsContext";
@@ -29,15 +30,17 @@ export async function getPokemons(
 ): Promise<IResponseGetPokemonsDTO> {
   try {
     const pokemons = await axiosInstance.get(`/pokemons`, { params });
-    // Notifications({ message: pokemons.data.message });
     return pokemons.data.data;
   } catch (error: any) {
-    Notifications({
+    SendReport({
       type: "error",
-      message: error.response
+      title: "Erro ao listar pokemons",
+      text: error.response
         ? error.response.data.message
-        : "Erro inesperado do sistema!",
+        : "Erro inesperado do sistema. Tente novamente.",
+      btnCallback: () => {},
     });
+
     return {
       pokemons: [],
       pagination: {
@@ -54,14 +57,15 @@ export async function findPokemon(
 ): Promise<IPokemonsExternal | null> {
   try {
     const pokemons = await axiosInstance.get(`/pokemons/find/${search}`);
-    // Notifications({ message: pokemons.data.message });
     return pokemons.data.data;
   } catch (error: any) {
-    Notifications({
+    SendReport({
       type: "error",
-      message: error.response
+      title: "Erro ao buscar pokemon",
+      text: error.response
         ? error.response.data.message
-        : "Erro inesperado do sistema!",
+        : "Erro inesperado do sistema. Tente novamente.",
+      btnCallback: () => {},
     });
 
     return null;
@@ -71,14 +75,15 @@ export async function findPokemon(
 export async function getTypesPokemons(): Promise<ITypesPokemons[]> {
   try {
     const types = await axiosInstance.get(`/pokemons/types`);
-    // Notifications({ message: types.data.message });
     return types.data.data;
   } catch (error: any) {
-    Notifications({
+    SendReport({
       type: "error",
-      message: error.response
+      title: "Erro ao listar tipos",
+      text: error.response
         ? error.response.data.message
-        : "Erro inesperado do sistema!",
+        : "Erro inesperado do sistema. Tente novamente.",
+      btnCallback: () => {},
     });
 
     return [];
@@ -101,14 +106,15 @@ export async function getByTypePokemons({
     const pokemons = await axiosInstance.get(`/pokemons/type/${type}`, {
       params: mergedParams,
     });
-    // Notifications({ message: pokemons.data.message });
     return pokemons.data.data;
   } catch (error: any) {
-    Notifications({
+    SendReport({
       type: "error",
-      message: error.response
+      title: "Erro ao filtrar por tipo",
+      text: error.response
         ? error.response.data.message
-        : "Erro inesperado do sistema!",
+        : "Erro inesperado do sistema. Tente novamente.",
+      btnCallback: () => {},
     });
 
     return {
@@ -119,5 +125,22 @@ export async function getByTypePokemons({
         total: 0,
       },
     };
+  }
+}
+export async function getPokemonNames(): Promise<IPokemonNames[]> {
+  try {
+    const pokemonsNames = await axiosInstance.get(`/pokemons/names`);
+    return pokemonsNames.data.data;
+  } catch (error: any) {
+    SendReport({
+      type: "error",
+      title: "Erro ao buscar nomes",
+      text: error.response
+        ? error.response.data.message
+        : "Erro inesperado do sistema. Tente novamente.",
+      btnCallback: () => {},
+    });
+
+    return [];
   }
 }

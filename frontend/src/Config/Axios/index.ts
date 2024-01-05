@@ -1,5 +1,6 @@
 import axios from "axios";
 import Notiflix from "notiflix";
+import { WaitToDisappear } from "../../Helpers/Notifications";
 
 export const axiosInstance = axios.create({
   baseURL: import.meta.env.BASE_URL_API ?? "http://localhost:3000",
@@ -33,6 +34,13 @@ axiosInstance.interceptors.response.use(
     return response;
   },
   (error) => {
+    if (error.code == "ERR_NETWORK") {
+      Notiflix.Loading.remove();
+      localStorage.clear();
+      async () => await WaitToDisappear(1550);
+      window.location.replace("/");
+    }
+
     if (error.response.status == 401) {
       localStorage.clear();
       window.location.replace("/");

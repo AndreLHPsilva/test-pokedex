@@ -8,6 +8,7 @@ export interface IPokemonsExternal {
   weight: number;
   base_experience: number;
   img_url: string;
+  basic_img_url: string;
   types: string[];
   stats: IStatsPokemon[];
   abilities: string[];

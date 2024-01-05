@@ -37,6 +37,7 @@ model Pokemon {
   id              String            @id @default(uuid())
   name            String
   external_id     Int               @unique
+  img_url         String?
   created_at      DateTime          @default(now())
   updated_at      DateTime          @updatedAt()
   TeamsOnPokemons TeamsOnPokemons[]

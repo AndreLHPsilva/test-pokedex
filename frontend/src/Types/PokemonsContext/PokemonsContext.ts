@@ -19,15 +19,19 @@ export interface IPokemonsContext {
   setSpecificPokemon: React.Dispatch<
     React.SetStateAction<IPokemonsExternal | null>
   >;
-  loading: boolean;
-  setLoading: React.Dispatch<React.SetStateAction<boolean>>;
+  loadingPokemon: boolean;
+  setLoadingPokemon: React.Dispatch<React.SetStateAction<boolean>>;
+  loadingNames: boolean;
+  setLoadingNames: React.Dispatch<React.SetStateAction<boolean>>;
+  pokemonNames: IPokemonNames[];
+  setPokemonNames: React.Dispatch<React.SetStateAction<IPokemonNames[]>>;
   GetTypesPokemons(): void;
   GetPokemons(data?: IPaginationParamsDTO): void;
   FindPokemon(search: string | number): void;
   GetByTypePokemon(data?: IParamsGetByTypePokemonsDTO): void;
   WhitchRequestSend(data: IPaginationParamsDTO): void;
   ClearSearchs(): void;
-  // FindByTypePokemons(): IPokemonsExternal[];
+  GetPokemonNames(): void;
 }
 
 export interface IPaginationParamsDTO {
@@ -58,6 +62,7 @@ export interface IPokemonsExternal {
   weight: number;
   base_experience: number;
   img_url: string;
+  basic_img_url: string;
   types: string[];
   stats: IStatsPokemon[];
   abilities: string[];
@@ -74,6 +79,8 @@ interface IStatsPokemon {
 export interface IEvolutions {
   name: string;
   position: number;
+  basic_img_url?: string;
+  link_url: string;
 }
 
 export interface ITeamsOnPokemons {
@@ -84,4 +91,8 @@ export interface ITeamsOnPokemons {
   pokemon_id: string;
   created_at: Date;
   updated_at: Date;
+}
+
+export interface IPokemonNames {
+  name: string;
 }

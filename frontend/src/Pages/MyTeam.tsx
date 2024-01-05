@@ -13,6 +13,7 @@ export function MyTeam() {
           onClose={() => setShowModalCreateTeam(false)}
           title="Criar time"
         />
+        
         <div className="flex justify-center items-center w-full font-medium mobile:px-5">
           <p className="mobile:text-sm">
             *Você não tem um time.{" "}

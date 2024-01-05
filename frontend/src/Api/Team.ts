@@ -1,5 +1,5 @@
 import { axiosInstance } from "../Config/Axios";
-import { Notifications } from "../Helpers/Notifications";
+import { SendReport } from "../Helpers/Notifications";
 import { ITeam } from "../Types/User";
 
 interface ApiResponse {
@@ -22,15 +22,17 @@ export interface IUpdateTeamDTO {
 export async function handleCreateTeam(name: string): Promise<ITeam | null> {
   try {
     const response = await axiosInstance.post<ApiResponse>("/teams", { name });
-    Notifications({ message: response.data.message });
     return response.data.data;
   } catch (error: any) {
-    Notifications({
+    SendReport({
       type: "error",
-      message: error.response
+      title: "Erro ao criar time",
+      text: error.response
         ? error.response.data.message
-        : "Erro inesperado do sistema!",
+        : "Erro inesperado do sistema. Tente novamente.",
+      btnCallback: () => {},
     });
+
     return null;
   }
 }
@@ -45,15 +47,17 @@ export async function handleAddPokemon(
         external_id,
       }
     );
-    Notifications({ message: response.data.message });
     return response.data.data;
   } catch (error: any) {
-    Notifications({
+    SendReport({
       type: "error",
-      message: error.response
+      title: "Erro ao adicionar pokemon",
+      text: error.response
         ? error.response.data.message
-        : "Erro inesperado do sistema!",
+        : "Erro inesperado do sistema. Tente novamente.",
+      btnCallback: () => {},
     });
+
     return null;
   }
 }
@@ -66,14 +70,15 @@ export async function handleRemovePokemon({
     const response = await axiosInstance.delete<ApiResponse>(
       `/teams/${team_id}/remove-pokemon/${pokemon_id}`
     );
-    Notifications({ message: response.data.message });
     return response.data.data;
   } catch (error: any) {
-    Notifications({
+    SendReport({
       type: "error",
-      message: error.response
+      title: "Erro ao remover pokemon",
+      text: error.response
         ? error.response.data.message
-        : "Erro inesperado do sistema!",
+        : "Erro inesperado do sistema. Tente novamente.",
+      btnCallback: () => {},
     });
     return null;
   }
@@ -88,15 +93,17 @@ export async function handleUpdateTeam({
       name,
     });
 
-    Notifications({ message: response.data.message });
     return response.data.data;
   } catch (error: any) {
-    Notifications({
+    SendReport({
       type: "error",
-      message: error.response
+      title: "Erro ao atualizar time",
+      text: error.response
         ? error.response.data.message
-        : "Erro inesperado do sistema!",
+        : "Erro inesperado do sistema. Tente novamente.",
+      btnCallback: () => {},
     });
+    
     return null;
   }
 }

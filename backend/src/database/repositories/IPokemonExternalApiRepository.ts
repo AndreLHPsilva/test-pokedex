@@ -1,4 +1,5 @@
 import { IEvolutions } from "@models/Evoluetions";
+import { IPokemonNames } from "@models/PokemonNames";
 import { IPokemonsExternal } from "@models/PokemonsExternal";
 import { ITypesPokemons } from "@models/TypesPokemons";
 
@@ -25,6 +26,7 @@ export interface IFindByTypeDTO{
 export interface IPokemonExternalApiRepository {
   get(data: IGetPokemonsDTO): Promise<IResponsePaginationPokemonsDTO>;
   getTypes(): Promise<ITypesPokemons[]>;
+  getPokemonNames(): Promise<IPokemonNames[]>;
   find(search: string | number): Promise<IPokemonsExternal | null>;
   findByType(data: IFindByTypeDTO): Promise<IResponsePaginationPokemonsDTO>;
   findEvolutions(external_id: number): Promise<IEvolutions[]>;

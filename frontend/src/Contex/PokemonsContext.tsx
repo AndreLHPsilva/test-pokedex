@@ -3,6 +3,7 @@ import {
   IParamsGetByTypePokemonsDTO,
   findPokemon,
   getByTypePokemons,
+  getPokemonNames,
   getPokemons,
   getTypesPokemons,
 } from "../Api/Pokemon";
@@ -10,11 +11,12 @@ import {
   IOptionsTypePokemon,
   IPaginationDTO,
   IPaginationParamsDTO,
+  IPokemonNames,
   IPokemonsContext,
   IPokemonsExternal,
 } from "../Types/PokemonsContext/PokemonsContext";
 import { ITypesPokemons } from "../Types/TypesPokemons";
-import { Notifications } from "../Helpers/Notifications";
+import { SendReport } from "../Helpers/Notifications";
 
 const PokemonsContext = createContext<IPokemonsContext>({} as IPokemonsContext);
 
@@ -26,6 +28,7 @@ const PokemonsProvider = ({ children }: { children: React.ReactNode }) => {
   };
 
   const [pokemons, setPokemons] = useState<IPokemonsExternal[]>([]);
+  const [pokemonNames, setPokemonNames] = useState<IPokemonNames[]>([]);
   const [specificPokemon, setSpecificPokemon] =
     useState<IPokemonsExternal | null>(null);
   const [typesPokemons, setTypesPokemons] = useState<ITypesPokemons[]>([]);
@@ -35,38 +38,43 @@ const PokemonsProvider = ({ children }: { children: React.ReactNode }) => {
   const [typeSearch, setTypeSearch] = useState<"type" | "others">("others");
   const [search, setSearch] = useState<string>("");
   const [pagination, setPagination] = useState<IPaginationDTO>(paginationBase);
-  const [loading, setLoading] = useState<boolean>(false);
+  const [loadingPokemon, setLoadingPokemon] = useState<boolean>(false);
+  const [loadingNames, setLoadingNames] = useState<boolean>(false);
 
   async function GetPokemons(data?: IPaginationParamsDTO) {
-    setLoading(true);
+    setLoadingPokemon(true);
     setTypeSearch("others");
     const response = await getPokemons(data);
     setPagination(response.pagination);
     setPokemons(response.pokemons);
-    setLoading(false);
+    setLoadingPokemon(false);
     return;
   }
 
   async function FindPokemon(search: string | number) {
-    setLoading(true);
+    setLoadingPokemon(true);
 
     if (typeof search == "string" && !search.trim()) {
       setSearch("");
-      Notifications({
+      SendReport({
         type: "error",
-        message: "Nenhum valor para pesquisa informado!",
+        title: "<strong>Valor inválido</strong>",
+        text: `Nenhum valor para pesquisa informado!`,
+        btnCallback: () => {},
       });
-      setLoading(false);
+      setLoadingPokemon(false);
       return;
     }
 
     if (!isNaN(Number(search)) && Number(search) <= 0) {
       setSearch("");
-      Notifications({
+      SendReport({
         type: "error",
-        message: "Informe valor maior que Zero!",
+        title: "<strong>Valor inválido</strong>",
+        text: `Informe valor maior que Zero!`,
+        btnCallback: () => {},
       });
-      setLoading(false);
+      setLoadingPokemon(false);
       return;
     }
 
@@ -79,17 +87,17 @@ const PokemonsProvider = ({ children }: { children: React.ReactNode }) => {
     });
     setPokemons(pokemon ? [pokemon] : []);
     setSpecificPokemon(pokemon);
-    setLoading(false);
+    setLoadingPokemon(false);
     return;
   }
 
   async function GetByTypePokemon(data?: IParamsGetByTypePokemonsDTO) {
-    setLoading(true);
+    setLoadingPokemon(true);
     setSearch("");
     const response = await getByTypePokemons(data);
     setPagination(response.pagination);
     setPokemons(response.pokemons);
-    setLoading(false);
+    setLoadingPokemon(false);
     return;
   }
 
@@ -98,6 +106,13 @@ const PokemonsProvider = ({ children }: { children: React.ReactNode }) => {
     return;
   }
 
+  async function GetPokemonNames() {
+    const names = await getPokemonNames();
+
+    if (names.length > 0) {
+      setPokemonNames(names);
+    }
+  }
   function ClearSearchs() {
     setTypeSearch("others");
     setSearch("");
@@ -145,8 +160,13 @@ const PokemonsProvider = ({ children }: { children: React.ReactNode }) => {
         setSearch,
         specificPokemon,
         setSpecificPokemon,
-        loading,
-        setLoading,
+        loadingPokemon, 
+        setLoadingPokemon,
+        pokemonNames,
+        setPokemonNames,
+        loadingNames,
+        setLoadingNames,
+        GetPokemonNames,
       }}
     >
       <>{children}</>

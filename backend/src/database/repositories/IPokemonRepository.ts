@@ -3,6 +3,7 @@ import { IPokemons } from "@models/Pokemons";
 export interface ICreatePokemonDTO {
   name: string;
   external_id: number;
+  img_url: string;
 }
 
 export interface IPokemonRepository {
