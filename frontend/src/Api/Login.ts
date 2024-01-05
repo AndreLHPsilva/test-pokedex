@@ -28,12 +28,15 @@ export async function handleLogin(
     await WaitToDisappear(1500);
     return response.data.data;
   } catch (error: any) {
-    SendNotify({
-      type: "error",
-      message: error.response
-        ? error.response.data.message
-        : "Erro inesperado do sistema!",
-    });
+    if(!(error?.code == "ERR_NETWORK")){
+      SendNotify({
+        type: "error",
+        message: error.response
+          ? error.response.data.message
+          : "Erro inesperado do sistema!",
+      });
+    }
+
     return null;
   }
 }

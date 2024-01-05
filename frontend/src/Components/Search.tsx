@@ -58,7 +58,7 @@ export function Search() {
           isClearable={true}
           blurInputOnSelect={true}
           closeMenuOnSelect={true}
-          placeholder="Nome ou Número"
+          placeholder="Nome do Pokemon"
           options={pokemonNames.map((name) => ({
             label: name.name,
             value: name.name,
@@ -93,7 +93,7 @@ export function Search() {
           className="uppercase font-bold bg-yellow-500 border-1 shadow-md border-black hover:bg-yellow-700 hover:scale-95 text-white custom-text-shadow-xs transition-all duration-300 tracking-wider mobile:text-xs mobile:tracking-normal disabled:opacity-50 disabled:cursor-not-allowed p-1.5"
           onClick={() => FindPokemon(search)}
           isDisabled={search ? false : true}
-          title="Digite algum nome ou número para pesquisar"
+          title={search ? "Clique para pesquisar" : "Você precisa selecionar algum nome"}
         >
           <Icon icon="wpf:search" width={20} />
         </Button>

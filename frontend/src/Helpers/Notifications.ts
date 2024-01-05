@@ -8,18 +8,23 @@ import Notiflix, {
 interface INotificationDTO {
   type?: "success" | "warning" | "error";
   message: string;
+  time?: number;
 }
 
-export function SendNotify({ message, type = "success" }: INotificationDTO) {
+export function SendNotify({
+  message,
+  type = "success",
+  time = 2000,
+}: INotificationDTO) {
   switch (type) {
     case "warning":
       return Notiflix.Notify.info(message, {
-        timeout: 1700,
+        timeout: time,
         pauseOnHover: true,
       });
     case "error":
       return Notiflix.Notify.failure(message, {
-        timeout: 1700,
+        timeout: time,
         pauseOnHover: true,
       });
     case "success":

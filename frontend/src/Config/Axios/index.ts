@@ -1,6 +1,6 @@
 import axios from "axios";
 import Notiflix from "notiflix";
-import { WaitToDisappear } from "../../Helpers/Notifications";
+import { SendNotify, WaitToDisappear } from "../../Helpers/Notifications";
 
 export const axiosInstance = axios.create({
   baseURL: import.meta.env.BASE_URL_API ?? "http://localhost:3000",
@@ -33,17 +33,29 @@ axiosInstance.interceptors.response.use(
     Notiflix.Loading.remove();
     return response;
   },
-  (error) => {
+  async (error) => {
     if (error.code == "ERR_NETWORK") {
       Notiflix.Loading.remove();
       localStorage.clear();
-      async () => await WaitToDisappear(1550);
+      SendNotify({
+        message: "Servidor ainda não disponível, em instantes tente novamente.",
+        type: "error",
+        time: 3000
+      })
+      await WaitToDisappear(3000);
       window.location.replace("/");
     }
 
-    if (error.response.status == 401) {
+    if (error?.response?.status == 401) {
       localStorage.clear();
+      SendNotify({
+        message: "Token inválido ou expirado, faça login novamente.",
+        type: "error",
+        time: 3000
+      })
+      await WaitToDisappear(3000);
       window.location.replace("/");
+      return;
     }
 
     Notiflix.Loading.remove();
